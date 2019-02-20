@@ -1,0 +1,18 @@
+# - Config file for the blc package
+# It defines the following variables
+#  BLC_INCLUDE_DIRS - include directories for blc
+#  BLC_LIBRARIES    - libraries to link against
+#  BLC_EXECUTABLE   - the bar executable
+
+# Compute paths
+get_filename_component(BLC_CMAKE_DIR "${CMAKE_CURRENT_LIST_FILE}" PATH)
+set(BLC_INCLUDE_DIRS "@CONF_INCLUDE_DIRS@")
+
+# Our library dependencies (contains definitions for IMPORTED targets)
+if(NOT TARGET foo AND NOT BLC_BINARY_DIR)
+  include("${BLC_CMAKE_DIR}/blcTargets.cmake")
+endif()
+
+# These are IMPORTED targets created by blcTargets.cmake
+set(BLC_LIBRARIES blc)
+set(BLC.2_LIBRARIES blc.2)
