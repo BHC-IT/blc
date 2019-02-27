@@ -77,9 +77,9 @@ if (!WIN32)
 	)
 endif()
 
-set (GCC_COVERAGE_COMPILE_FLAGS "-g3 -std=c++17")
+set (GCC_COVERAGE_COMPILE_FLAGS "")
 if (WIN32)
-	set (GCC_COVERAGE_COMPILE_FLAGS "-g3 -std=c++17")
+	set (GCC_COVERAGE_COMPILE_FLAGS "")
 endif()
 
 add_library(objlib OBJECT ${SRCS} ${TEMPLATE} ${HEADERS})
@@ -91,6 +91,9 @@ target_compile_features(objlib PUBLIC cxx_nullptr)
 
 add_library(blc STATIC $<TARGET_OBJECTS:objlib> src/main.cpp blc/blcmain.hpp)
 add_library(blc.2 SHARED $<TARGET_OBJECTS:objlib>)
+
+set_property(TARGET blc PROPERTY CXX_STANDARD 17)
+set_property(TARGET blc.2 PROPERTY CXX_STANDARD 17)
 
 target_compile_features(blc PUBLIC cxx_nullptr)
 target_compile_features(blc.2 PUBLIC cxx_nullptr)
