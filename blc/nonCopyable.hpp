@@ -2,7 +2,7 @@
 
 
 namespace blc {
-	namespace tools {
+	namespace symbole {
 		/// set the copy constructor and copy operator to private to get a compilation error when copied in code. inherite this to class that dont be sensfully copied
 		class nonCopyable {
 		public:

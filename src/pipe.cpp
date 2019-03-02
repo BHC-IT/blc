@@ -120,7 +120,19 @@ bool blc::tools::pipe::switchState()
 	return (this->_master);
 }
 
-std::string blc::tools::pipe::read()
+void blc::tools::pipe::write(const std::string &str) const
+{
+	if (*(this->_closed))
+		return;
+	if (this->_block == true)
+		this->waitWrite(1000);
+	if (this->_master)
+		this->push_on(this->_in, str, this->_inMut);
+	else
+		this->push_on(this->_out, str, this->_outMut);
+}
+
+std::string blc::tools::pipe::read() const
 {
 	std::string str("");
 
@@ -133,16 +145,9 @@ std::string blc::tools::pipe::read()
 	return (str);
 }
 
-void blc::tools::pipe::write(const std::string &str)
+std::string blc::tools::pipe::read(int n) const
 {
-	if (*(this->_closed))
-		return;
-	if (this->_block == true)
-		this->waitWrite(1000);
-	if (this->_master)
-		this->push_on(this->_in, str, this->_inMut);
-	else
-		this->push_on(this->_out, str, this->_outMut);
+	return (this->read());
 }
 
 void blc::tools::pipe::close()
@@ -201,24 +206,22 @@ bool blc::tools::pipe::isClosed() const
 	return (*(this->_closed));
 }
 
-blc::tools::pipe &blc::tools::pipe::waitWrite(int usec)
+void blc::tools::pipe::waitWrite(int usec) const
 {
 	if (this->isClosed())
-		return (*this);
+		return;
 	while (this->writable() == false){
 		std::this_thread::sleep_for(std::chrono::microseconds(usec));
 	}
-	return (*this);
 }
 
-blc::tools::pipe &blc::tools::pipe::waitRead(int usec)
+void blc::tools::pipe::waitRead(int usec) const
 {
 	if (this->isClosed())
-		return (*this);
+		return;
 	while (this->readable() == false){
 		std::this_thread::sleep_for(std::chrono::microseconds(usec));
 	}
-	return (*this);
 }
 
 blc::tools::pipe &blc::tools::pipe::operator=(const pipe &other)
