@@ -1,15 +1,15 @@
 #include "blc/nonCopyable.hpp"
 
-blc::tools::nonCopyable::nonCopyable()
+blc::symbole::nonCopyable::nonCopyable()
 {
 }
 
-blc::tools::nonCopyable::nonCopyable(const blc::tools::nonCopyable &other)
+blc::symbole::nonCopyable::nonCopyable(const blc::symbole::nonCopyable &other)
 {
 	(void)other;
 }
 
-blc::tools::nonCopyable &blc::tools::nonCopyable::operator=(const blc::tools::nonCopyable &other)
+blc::symbole::nonCopyable &blc::symbole::nonCopyable::operator=(const blc::symbole::nonCopyable &other)
 {
 	(void)other;
 

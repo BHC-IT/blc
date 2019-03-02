@@ -22,6 +22,7 @@
 #include "blc/regex.hpp"
 #include "blc/float.hpp"
 #include "blc/fileSize.hpp"
+#include "blc/stringOp.hpp"
 
 namespace blc{
 	/// contain basic tools.
@@ -35,4 +36,7 @@ namespace blc{
 
 	/// contain mathematical class.
 	namespace math{}
+
+	/// contain symbolique class.
+	namespace symbole{}
 }

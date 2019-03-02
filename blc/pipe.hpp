@@ -27,15 +27,16 @@ namespace blc {
 			bool		*getClosed(); ///< return a pointer on the _closed boolean. hazardous
 			void		setBlock(bool block); ///< set the blocking state
 			bool		switchState(); ///< switch the commuter between slave/master
-			std::string	read(); /**< the string used depend on commuter state. */ ///< read the pipe, C read-like.
-			void		write(const std::string &str); /**< the string used depend on commuter state. */ ///< write on pipe, C read-like.
+			void		write(const std::string &str) const; /**< the string used depend on commuter state. */ ///< write on pipe, C read-like.
+			std::string	read() const; /**< the string used depend on commuter state. */ ///< read the pipe, C read-like.
+			std::string	read(int n) const; /**< the string used depend on commuter state. */ ///< read the pipe, C read-like.
 			void		close(); /**< destroy all pointer except _closed and set it to true */ ///< close the pipe.
 			bool		readable() const; ///< return true if the pipe is readable, false otherwise
 			bool		writable() const; ///< return true if the pipe is writable, false otherwise
 			bool		isClosed() const; ///< return true if the pipe is close, false otherwise
-			pipe		&waitRead(int usec);
-			pipe		&waitWrite(int usec); ///< wait for the pipe to be writable. check evry usec, else sleep
-			pipe 		&operator=(const pipe &other); ///< wait for the pipe to be readable. check evry usec, else sleep
+			void 		waitRead(int usec) const; ///< wait for the pipe to be readable.
+			void 		waitWrite(int usec) const; ///< wait for the pipe to be writable.
+			pipe 		&operator=(const pipe &other); ///< assignement operator
 			pipe 		&operator<<(const std::string &str); ///< write from string to pipe
 			pipe 		&operator>>(std::string &str); ///< read from pipe to string
 		protected:

@@ -28,6 +28,7 @@ set(SRCS
 	src/server2way.cpp
 	src/singleServer.cpp
 	src/stream.cpp
+	src/stringOp.cpp
 	src/bindTest.cpp
 	)
 
@@ -67,6 +68,7 @@ set(HEADERS
 	blc/singleServer.hpp
 	blc/Socket.hpp
 	blc/stream.hpp
+	blc/stringOp.hpp
 	blc/vecteur2.hpp
 	blc/bindTest.hpp
 	)

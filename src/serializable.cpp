@@ -57,6 +57,8 @@ std::string blc::tools::serializable::cut(std::string &str, char cut)
 	std::string	ret = str.substr(0, i);
 
 	str = str.substr(i + 1, str.size());
+	if (i == -1)
+		str = "";
 
 	return (ret);
 }
