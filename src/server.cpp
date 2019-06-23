@@ -19,7 +19,7 @@
 #include <fcntl.h>
 #include <string.h>
 #include <iostream>
-#include "blc/Server.hpp"
+#include "blc/server.hpp"
 #include "blc/errorHandle.hpp"
 
 #ifdef __WIN32__

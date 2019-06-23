@@ -11,9 +11,9 @@ set(blc_VERSION
 
 
 set(SRCS
+	src/bindTest.cpp
 	src/cinReadable.cpp
-	src/Client.cpp
-	src/Socket.cpp
+	src/client.cpp
 	src/client2way.cpp
 	src/errorHandle.cpp
 	src/fileSize.cpp
@@ -24,12 +24,12 @@ set(SRCS
 	src/pipeCluster.cpp
 	src/regex.cpp
 	src/serializable.cpp
-	src/Server.cpp
+	src/server.cpp
 	src/server2way.cpp
 	src/singleServer.cpp
+	src/socket.cpp
 	src/stream.cpp
 	src/stringOp.cpp
-	src/bindTest.cpp
 	)
 
 if (!WIN32)
@@ -48,9 +48,11 @@ set(TEMPLATE
 set(HEADERS
 	blc/actor.hpp
 	blc/blc.hpp
-	blc/Client.hpp
+	blc/client.hpp
 	blc/cinReadable.hpp
 	blc/client2way.hpp
+	blc/concept.hpp
+	blc/constraint.hpp
 	blc/errorHandle.hpp
 	blc/fileSize.hpp
 	blc/float.hpp
@@ -63,15 +65,19 @@ set(HEADERS
 	blc/protocolFactory.hpp
 	blc/regex.hpp
 	blc/serializable.hpp
-	blc/Server.hpp
+	blc/server.hpp
 	blc/server2way.hpp
 	blc/singleServer.hpp
-	blc/Socket.hpp
+	blc/socket.hpp
 	blc/stream.hpp
 	blc/stringOp.hpp
 	blc/vecteur2.hpp
 	blc/bindTest.hpp
 	)
+
+set(CONCEPTS
+	concept/operable.hpp
+)
 
 if (!WIN32)
 	set(HEADERS ${HEADERS}
@@ -84,7 +90,7 @@ if (WIN32)
 	set (GCC_COVERAGE_COMPILE_FLAGS "")
 endif()
 
-add_library(objlib OBJECT ${SRCS} ${TEMPLATE} ${HEADERS})
+add_library(objlib OBJECT ${SRCS} ${TEMPLATE} ${HEADERS} ${CONCEPTS})
 
 #set the objlib dummy
 set_property(TARGET objlib PROPERTY POSITION_INDEPENDENT_CODE 1)
@@ -143,6 +149,7 @@ install(TARGETS blc blc.2 EXPORT blcTargets
 	ARCHIVE DESTINATION ${INSTALL_LIB_DIR}
 	LIBRARY DESTINATION ${INSTALL_LIB_DIR})
 install(FILES ${HEADERS} ${TEMPLATE} DESTINATION ${INSTALL_INCLUDE_DIR}/blc)
+install(FILES ${CONCEPTS} DESTINATION ${INSTALL_INCLUDE_DIR}/concept)
 install(FILES blc/blcmain.hpp DESTINATION ${INSTALL_INCLUDE_DIR}/blc)
 
 

@@ -3,10 +3,10 @@
 #include "blc/nonCopyable.hpp"
 #include "blc/serializable.hpp"
 #include "blc/errorHandle.hpp"
-#include "blc/Socket.hpp"
-#include "blc/Server.hpp"
+#include "blc/socket.hpp"
+#include "blc/server.hpp"
 #include "blc/client2way.hpp"
-#include "blc/Client.hpp"
+#include "blc/client.hpp"
 #include "blc/singleServer.hpp"
 #include "blc/protocolCaps.hpp"
 #include "blc/protocolFactory.hpp"
@@ -23,6 +23,10 @@
 #include "blc/float.hpp"
 #include "blc/fileSize.hpp"
 #include "blc/stringOp.hpp"
+#include "blc/constraint.hpp"
+#include "blc/concept.hpp"
+
+#include "concept/operable.hpp"
 
 namespace blc{
 	/// contain basic tools.
@@ -39,4 +43,7 @@ namespace blc{
 
 	/// contain symbolique class.
 	namespace symbole{}
+
+	/// contain all the tools to build and use constraint and concept
+	namespace concept{}
 }

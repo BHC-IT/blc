@@ -6,8 +6,10 @@ blc::math::Float::Float() : _nb(0), _E(0)
 {
 }
 
-blc::math::Float::Float(float i) : _nb(i), _E(0)
+blc::math::Float::Float(double i) : _nb(i), _E(0)
 {
+	if (i == 0)
+		return;
 	if (this->_nb > 1 || this->_nb < -1){
 		for (; this->_nb >= 10 || this->_nb <= -10;){
 			this->_E++;
@@ -21,8 +23,10 @@ blc::math::Float::Float(float i) : _nb(i), _E(0)
 	}
 }
 
-blc::math::Float::Float(float i, int E) : _nb(i), _E(E)
+blc::math::Float::Float(double i, int E) : _nb(i), _E(E)
 {
+	if (this->_nb == 0)
+		return;
 	if (this->_nb > 1 || this->_nb < -1){
 		for (; this->_nb >= 10 || this->_nb <= -10;){
 			this->_E++;
@@ -46,11 +50,13 @@ blc::math::Float::Float(blc::math::Float &&other) : _nb(other.getNb()), _E(other
 	other.setE(0);
 }
 
-blc::math::Float &blc::math::Float::operator=(float i)
+blc::math::Float &blc::math::Float::operator=(double i)
 {
 	this->_nb = i;
 	this->_E = 0;
 
+	if (this->_nb == 0)
+		return (*this);
 	if (this->_nb > 1 || this->_nb < -1){
 		for (; this->_nb >= 10 || this->_nb <= -10;){
 			this->_E++;
@@ -82,7 +88,7 @@ blc::math::Float &blc::math::Float::operator=(blc::math::Float &&other)
 	return (*this);
 }
 
-blc::math::Float &blc::math::Float::operator+(float i)
+blc::math::Float &blc::math::Float::operator+(double i)
 {
 	blc::math::Float fl(i);
 
@@ -93,7 +99,7 @@ blc::math::Float &blc::math::Float::operator+(float i)
 blc::math::Float &blc::math::Float::operator+(const blc::math::Float &i)
 {
 	int diff = this->_E - i.getE();
-	float tmp = i.getNb();
+	double tmp = i.getNb();
 
 	while (diff != 0){
 		if (diff < 0){
@@ -108,7 +114,7 @@ blc::math::Float &blc::math::Float::operator+(const blc::math::Float &i)
 	return (*this);
 }
 
-blc::math::Float &blc::math::Float::operator-(float i)
+blc::math::Float &blc::math::Float::operator-(double i)
 {
 	blc::math::Float fl(i);
 
@@ -119,7 +125,7 @@ blc::math::Float &blc::math::Float::operator-(float i)
 blc::math::Float &blc::math::Float::operator-(const blc::math::Float &i)
 {
 	int diff = this->_E - i.getE();
-	float tmp = i.getNb();
+	double tmp = i.getNb();
 
 	while (diff != 0){
 		if (diff < 0){
@@ -134,7 +140,7 @@ blc::math::Float &blc::math::Float::operator-(const blc::math::Float &i)
 	return (*this);
 }
 
-blc::math::Float &blc::math::Float::operator*(float i)
+blc::math::Float &blc::math::Float::operator*(double i)
 {
 	blc::math::Float fl(i);
 
@@ -145,7 +151,7 @@ blc::math::Float &blc::math::Float::operator*(float i)
 blc::math::Float &blc::math::Float::operator*(const blc::math::Float &i)
 {
 	int diff = this->_E - i.getE();
-	float tmp = i.getNb();
+	double tmp = i.getNb();
 
 	while (diff != 0){
 		if (diff < 0){
@@ -160,7 +166,7 @@ blc::math::Float &blc::math::Float::operator*(const blc::math::Float &i)
 	return (*this);
 }
 
-blc::math::Float &blc::math::Float::operator/(float i)
+blc::math::Float &blc::math::Float::operator/(double i)
 {
 	blc::math::Float fl(i);
 
@@ -171,7 +177,7 @@ blc::math::Float &blc::math::Float::operator/(float i)
 blc::math::Float &blc::math::Float::operator/(const blc::math::Float &i)
 {
 	int diff = this->_E - i.getE();
-	float tmp = i.getNb();
+	double tmp = i.getNb();
 
 	while (diff != 0){
 		if (diff < 0){
@@ -186,7 +192,7 @@ blc::math::Float &blc::math::Float::operator/(const blc::math::Float &i)
 	return (*this);
 }
 
-bool blc::math::Float::operator==(float i)
+bool blc::math::Float::operator==(double i)
 {
 	if (this->calculate() == i)
 		return (true);
@@ -202,7 +208,7 @@ bool blc::math::Float::operator==(const blc::math::Float &i)
 	return (true);
 }
 
-bool blc::math::Float::operator>(float i)
+bool blc::math::Float::operator>(double i)
 {
 	if (this->calculate() > i)
 		return (true);
@@ -218,7 +224,7 @@ bool blc::math::Float::operator>(const blc::math::Float &i)
 	return (true);
 }
 
-bool blc::math::Float::operator<(float i)
+bool blc::math::Float::operator<(double i)
 {
 	if (this->calculate() < i)
 		return (true);
@@ -234,7 +240,7 @@ bool blc::math::Float::operator<(const blc::math::Float &i)
 	return (true);
 }
 
-bool blc::math::Float::operator>=(float i)
+bool blc::math::Float::operator>=(double i)
 {
 	if (this->calculate() >= i)
 		return (true);
@@ -250,7 +256,7 @@ bool blc::math::Float::operator>=(const blc::math::Float &i)
 	return (true);
 }
 
-bool blc::math::Float::operator<=(float i)
+bool blc::math::Float::operator<=(double i)
 {
 	if (this->calculate() <= i)
 		return (true);
@@ -266,17 +272,17 @@ bool blc::math::Float::operator<=(const blc::math::Float &i)
 	return (true);
 }
 
-float blc::math::Float::operator()() const
+double blc::math::Float::operator()() const
 {
 	return (this->calculate());
 }
 
-float blc::math::Float::getNb() const
+double blc::math::Float::getNb() const
 {
 	return (this->_nb);
 }
 
-void blc::math::Float::setNb(float nb)
+void blc::math::Float::setNb(double nb)
 {
 	this->_nb = nb;
 }
@@ -291,10 +297,10 @@ void blc::math::Float::setE(int E)
 	this->_E = E;
 }
 
-float blc::math::Float::calculate() const
+double blc::math::Float::calculate() const
 {
 	int	tmp = this->_E;
-	float	ret = this->_nb;
+	double	ret = this->_nb;
 
 	while (tmp != 0){
 		if (tmp < 0){

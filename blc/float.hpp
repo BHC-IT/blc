@@ -7,51 +7,51 @@ namespace blc {
 		class Float : public blc::tools::serializable {
 		public:
 			Float();
-			Float(float i);
-			Float(float i, int E);
+			Float(double i);
+			Float(double i, int E);
 			Float(const Float &other);
 			Float(Float &&other);
 
-			Float	&operator=(float i);
+			Float	&operator=(double i);
 			Float	&operator=(const Float &other);
 			Float	&operator=(Float &&other);
 
-			Float	&operator+(float i);
+			Float	&operator+(double i);
 			Float	&operator+(const Float &i);
-			Float	&operator-(float i);
+			Float	&operator-(double i);
 			Float	&operator-(const Float &i);
-			Float	&operator*(float i);
+			Float	&operator*(double i);
 			Float	&operator*(const Float &i);
-			Float	&operator/(float i);
+			Float	&operator/(double i);
 			Float	&operator/(const Float &i);
 
-			bool	operator==(float i);
+			bool	operator==(double i);
 			bool	operator==(const Float &i);
-			bool	operator>(float i);
+			bool	operator>(double i);
 			bool	operator>(const Float &i);
-			bool	operator<(float i);
+			bool	operator<(double i);
 			bool	operator<(const Float &i);
-			bool	operator>=(float i);
+			bool	operator>=(double i);
 			bool	operator>=(const Float &i);
-			bool	operator<=(float i);
+			bool	operator<=(double i);
 			bool	operator<=(const Float &i);
 
-			float	operator()() const;
+			double	operator()() const;
 
-			float	getNb() const;
-			void	setNb(float nb);
+			double	getNb() const;
+			void	setNb(double nb);
 
 			int	getE() const;
 			void	setE(int E);
 
-			float	calculate() const;
+			double	calculate() const;
 			void	align();
 			void	align(int nb);
 
 			std::string	serialize() const;
 			void		unserialize(const std::string &str);
 		private:
-			float	_nb;
+			double	_nb;
 			int	_E;
 		};
 	}
