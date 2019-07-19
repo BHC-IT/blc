@@ -22,6 +22,7 @@ set(SRCS
 	src/nonCopyable.cpp
 	src/pipe.cpp
 	src/pipeCluster.cpp
+	src/promise.cpp
 	src/regex.cpp
 	src/serializable.cpp
 	src/server.cpp
@@ -61,6 +62,7 @@ set(HEADERS
 	blc/pair.hpp
 	blc/pipe.hpp
 	blc/pipeCluster.hpp
+	blc/promise.hpp
 	blc/protocolCaps.hpp
 	blc/protocolFactory.hpp
 	blc/regex.hpp

@@ -25,6 +25,7 @@
 #include "blc/stringOp.hpp"
 #include "blc/constraint.hpp"
 #include "blc/concept.hpp"
+#include "blc/promise.hpp"
 
 #include "concept/operable.hpp"
 

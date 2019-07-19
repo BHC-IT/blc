@@ -7,7 +7,7 @@
 #else
 	#include <netdb.h>
 #endif
-#include "blc/Socket.hpp"
+#include "blc/socket.hpp"
 
 namespace blc {
 	namespace network {

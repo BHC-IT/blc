@@ -1,19 +1,11 @@
-#include <blc/float.hpp>
+#include <blc/blc.hpp>
 #include <iostream>
 #include <iomanip>
 
 int main()
 {
-	blc::math::Float test(2, 0);
+	blc::tools::promise<int> prom([](blc::tools::promise<int>::resolve resolve, blc::tools::promise<int>::reject reject){
+	});
 
-	std::cout << std::fixed << std::setprecision(20);
-	std::cout << test() << std::endl;
-	for (double i = 0; i < 100; i += 1){
-		blc::math::Float add(1);
-		test = test + add;
-		std::cout << "nb = " << test.getNb() << std::endl;
-		std::cout << "E = " << test.getE() << std::endl;
-		std::cout << "calculated = " << test() << std::endl;
-	}
-	return (0);
+	return (1);
 }

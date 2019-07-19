@@ -21,7 +21,7 @@
 #include <cstdlib>
 #include <ctime>
 #include "blc/server2way.hpp"
-#include "blc/Client.hpp"
+#include "blc/client.hpp"
 #include "blc/singleServer.hpp"
 #include "blc/errorHandle.hpp"
 #include "blc/bindTest.hpp"
