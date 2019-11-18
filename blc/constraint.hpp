@@ -1,7 +1,7 @@
 #pragma once
 
 namespace blc {
-	/// test if a template class instanciation respecte all needed concept. does not construct this in your constructor for better error output.
+	/// test if a template class instanciation respecte all needed concept. do construct this in your constructor for better error output.
 	namespace concept {
 		template <typename... args>
 		class constraint {
@@ -19,8 +19,9 @@ namespace blc {
 			}
 		protected:
 			constraint() {
-				this->testConstraint();
+				// this->testConstraint();
 			}
+		public:
 		};
 	}
 }
