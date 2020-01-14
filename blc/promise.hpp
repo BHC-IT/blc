@@ -12,22 +12,23 @@ using rejecter = std::function<void(blc::error::exception)>;
 
 namespace blc {
 	namespace tools {
+		/// a promise object working nearly as JavaScript promise.
 		template <typename T>
 		class promise {
 		public:
 			promise() = delete;
 			promise(const promise &other) = delete;
-			promise(promise &&other);
+			promise(promise &&other); ///< copy constructor
 			// promise(std::function<void(promise &)> func);
-			promise(std::function<void(std::function<void(T)>, std::function<void(blc::error::exception)>)> func);
-			~promise();
+			promise(std::function<void(std::function<void(T)>, std::function<void(blc::error::exception)>)> func); ///< value constructor
+			~promise(); ///< hold the thread if it didnt finished.
 
-			promise &then(std::function<void(T)> func);
-			promise &catcher(std::function<void(blc::error::exception)> func);
+			promise &then(std::function<void(T)> func); ///< to called after contructing your promise. the fonction given will be called with the value passed to resolve
+			promise &catcher(std::function<void(blc::error::exception)> func); ///< to called after contructing your promise. the fonction given will be called with the value passed to reject
 
-			void resolve(T value);
-			void reject(blc::error::exception code);
 		private:
+			void resolve(T value); ///< function to be called in the lambda given to the constructor of your promise. call the then lambda with value.
+			void reject(blc::error::exception code); ///< function to be called in the lambda given to the constructor of your promise. call the catch lambda with value.
 			void engage();
 
 			T 											_value;

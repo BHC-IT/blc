@@ -6,7 +6,8 @@
 
 int main()
 {
-	blc::tools::promise<int> prom([](resolver<int> resolve, rejecter reject){
+	blc::tools::promise<int> prom([](auto resolve, auto reject){
+		// std::this_thread::sleep_for(std::chrono::duration<double, std::milli>(5));
 		resolve(1);
 	});
 
@@ -15,5 +16,6 @@ int main()
 	}).catcher([](blc::error::exception e){
 		std::cout << e.what() << std::endl;
 	});
+	std::cout << "ok" << std::endl;
 	return (0);
 }
