@@ -42,11 +42,6 @@ namespace blc {
 	}
 }
 
-void test()
-{
-}
-
-
 template <typename T>
 blc::tools::promise<T>::promise(std::function<void(std::function<void(T)>, std::function<void(blc::error::exception)>)> func)
 {
