@@ -1,7 +1,7 @@
 #pragma once
 
 #include "blc/nonCopyable.hpp"
-#include "blc/Socket.hpp"
+#include "blc/socket.hpp"
 
 
 namespace blc {

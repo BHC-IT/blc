@@ -51,7 +51,7 @@
 	#endif
 #endif
 
-#include "blc/Socket.hpp"
+#include "blc/socket.hpp"
 #include "blc/errorHandle.hpp"
 
 blc::network::Socket::Socket() : _address(""), _port(0), _block(false), _opened(false)
