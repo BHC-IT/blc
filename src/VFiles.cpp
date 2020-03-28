@@ -129,21 +129,53 @@ void blc::tools::VFiles::unload()
 
 void blc::tools::VFiles::align()
 {
-	if(this->_file)  //On teste si tout est OK
+	if(this->_file)  //On test si tout est OK
 		this->_file << this->_cache;
 	else
 		throw std::string("ERREUR: Impossible d'ouvrir le fichier " + this->_fileName + " en lecture DANS LA FONCTION 'align();' DANS LA CLASSE VFiles");
 }
 
-int blc::tools::VFiles::getCursor() const
+int blc::tools::VFiles::tellg() const
 {
 	return this->_cursor;
 }
 
-void blc::tools::VFiles::setCursor(const int pos)
+void blc::tools::VFiles::seekg(const int pos)
 {
 	if (pos > this->_cache.size())
-		throw std::string("ERREUR: Impossible modifier le curseur (valeur trop élevée) DANS LA FONCTION 'setCursor();' DANS LA CLASSE VFiles");
+		throw std::string("ERREUR: Impossible modifier le curseur (valeur trop élevée) DANS LA FONCTION 'seekg();' DANS LA CLASSE VFiles");
 	else
 		this->_cursor = pos;
+}
+
+enum seekDir {beg, end, cur};
+void blc::tools::VFiles::seekg(const int pos, const enum seekDir sd)
+{
+	switch(sd)
+	{
+	case beg:
+		this->seekg(0);
+		this->seekg(pos);
+		break;
+	case end:
+		this->seekg(this->gCount());
+		if (pos > 0)
+			throw std::string("ERREUR: Impossible modifier le curseur (valeur trop élevée) DANS LA FONCTION 'seekg();' DANS LA CLASSE VFiles");
+		else if (pos < 0)
+			this->seekg(this->tellg() + pos);
+		break;
+	case cur:
+		if (this->tellg() + pos < 0 || this->tellg() + pos > this->gCount())
+		{
+			this->seekg((this->tellg() + pos < 0)? 0 : this->gCount() );
+			throw std::string("ERREUR: Impossible modifier le curseur (valeur trop élevée ou trop base) DANS LA FONCTION 'seekg();' DANS LA CLASSE VFiles");
+		} else
+			this->seekg(this->tellg() + pos);
+		break;
+	}
+}
+
+int blc::tools::VFiles::gCount() const
+{
+	return this->_cache.size();
 }
