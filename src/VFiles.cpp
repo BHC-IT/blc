@@ -1,4 +1,5 @@
 #include "blc/VFiles.hpp"
+#include "blc/errorHandle.hpp"
 
 blc::tools::VFiles::VFiles(const std::string &fileName) : _file(fileName)
 {
