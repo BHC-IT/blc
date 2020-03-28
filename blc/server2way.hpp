@@ -3,8 +3,8 @@
 #include <map>
 #include <thread>
 #include "blc/pipe.hpp"
-#include "blc/Client.hpp"
-#include "blc/Server.hpp"
+#include "blc/client.hpp"
+#include "blc/server.hpp"
 
 namespace blc {
 	namespace network {

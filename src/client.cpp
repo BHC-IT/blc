@@ -15,7 +15,7 @@
 	#include <arpa/inet.h>
 	#include <netdb.h>
 #endif
-#include "blc/Client.hpp"
+#include "blc/client.hpp"
 
 blc::network::Client::Client(int socket, struct sockaddr addr) : Socket()
 {

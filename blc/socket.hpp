@@ -33,7 +33,7 @@
 namespace blc {
 	namespace network {
 		/// wrap-up the unix socket
-		class Socket : private tools::nonCopyable, public stream {
+		class Socket : private symbole::nonCopyable, public stream {
 		public:
 			Socket(); /**< construct without address nor port socket empty. can't be opened unless the socket adress and port are fills.*/ ///< construct an empty socket.
 			Socket(std::string address, int port, bool block = true, int mode = TCP, int type = AF_INET); ///< construct a set object

@@ -11,9 +11,9 @@ set(blc_VERSION
 
 
 set(SRCS
+	src/bindTest.cpp
 	src/cinReadable.cpp
-	src/Client.cpp
-	src/Socket.cpp
+	src/client.cpp
 	src/client2way.cpp
 	src/errorHandle.cpp
 	src/fileSize.cpp
@@ -22,13 +22,15 @@ set(SRCS
 	src/nonCopyable.cpp
 	src/pipe.cpp
 	src/pipeCluster.cpp
+	src/promise.cpp
 	src/regex.cpp
 	src/serializable.cpp
-	src/Server.cpp
+	src/server.cpp
 	src/server2way.cpp
 	src/singleServer.cpp
+	src/socket.cpp
 	src/stream.cpp
-	src/bindTest.cpp
+	src/stringOp.cpp
 	)
 
 if (!WIN32)
@@ -47,9 +49,11 @@ set(TEMPLATE
 set(HEADERS
 	blc/actor.hpp
 	blc/blc.hpp
-	blc/Client.hpp
+	blc/client.hpp
 	blc/cinReadable.hpp
 	blc/client2way.hpp
+	blc/concept.hpp
+	blc/constraint.hpp
 	blc/errorHandle.hpp
 	blc/fileSize.hpp
 	blc/float.hpp
@@ -58,18 +62,24 @@ set(HEADERS
 	blc/pair.hpp
 	blc/pipe.hpp
 	blc/pipeCluster.hpp
+	blc/promise.hpp
 	blc/protocolCaps.hpp
 	blc/protocolFactory.hpp
 	blc/regex.hpp
 	blc/serializable.hpp
-	blc/Server.hpp
+	blc/server.hpp
 	blc/server2way.hpp
 	blc/singleServer.hpp
-	blc/Socket.hpp
+	blc/socket.hpp
 	blc/stream.hpp
+	blc/stringOp.hpp
 	blc/vecteur2.hpp
 	blc/bindTest.hpp
 	)
+
+set(CONCEPTS
+	concept/operable.hpp
+)
 
 if (!WIN32)
 	set(HEADERS ${HEADERS}
@@ -77,12 +87,12 @@ if (!WIN32)
 	)
 endif()
 
-set (GCC_COVERAGE_COMPILE_FLAGS "-g3 -std=c++17")
+set (GCC_COVERAGE_COMPILE_FLAGS "")
 if (WIN32)
-	set (GCC_COVERAGE_COMPILE_FLAGS "-g3 -std=c++17")
+	set (GCC_COVERAGE_COMPILE_FLAGS "")
 endif()
 
-add_library(objlib OBJECT ${SRCS} ${TEMPLATE} ${HEADERS})
+add_library(objlib OBJECT ${SRCS} ${TEMPLATE} ${HEADERS} ${CONCEPTS})
 
 #set the objlib dummy
 set_property(TARGET objlib PROPERTY POSITION_INDEPENDENT_CODE 1)
@@ -91,6 +101,9 @@ target_compile_features(objlib PUBLIC cxx_nullptr)
 
 add_library(blc STATIC $<TARGET_OBJECTS:objlib> src/main.cpp blc/blcmain.hpp)
 add_library(blc.2 SHARED $<TARGET_OBJECTS:objlib>)
+
+set_property(TARGET blc PROPERTY CXX_STANDARD 17)
+set_property(TARGET blc.2 PROPERTY CXX_STANDARD 17)
 
 target_compile_features(blc PUBLIC cxx_nullptr)
 target_compile_features(blc.2 PUBLIC cxx_nullptr)
@@ -138,6 +151,7 @@ install(TARGETS blc blc.2 EXPORT blcTargets
 	ARCHIVE DESTINATION ${INSTALL_LIB_DIR}
 	LIBRARY DESTINATION ${INSTALL_LIB_DIR})
 install(FILES ${HEADERS} ${TEMPLATE} DESTINATION ${INSTALL_INCLUDE_DIR}/blc)
+install(FILES ${CONCEPTS} DESTINATION ${INSTALL_INCLUDE_DIR}/concept)
 install(FILES blc/blcmain.hpp DESTINATION ${INSTALL_INCLUDE_DIR}/blc)
 
 

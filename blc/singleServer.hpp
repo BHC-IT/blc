@@ -1,7 +1,7 @@
 #pragma once
 
-#include "blc/Server.hpp"
-#include "blc/Client.hpp"
+#include "blc/server.hpp"
+#include "blc/client.hpp"
 
 namespace blc {
 	namespace network {

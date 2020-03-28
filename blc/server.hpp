@@ -59,7 +59,7 @@
 namespace blc {
 	namespace network {
 		/// server object. the run function must be implemented in the child.
-		class Server : virtual public tools::nonCopyable {
+		class Server : virtual public symbole::nonCopyable {
 		public:
 			Server(unsigned int maxClient, unsigned int port, bool block = true, int mode = SOCK_STREAM, int type = AF_INET); ///< set server information needed to run
 			~Server();

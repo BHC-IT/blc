@@ -1,13 +1,13 @@
 #pragma once
 
 #include "blc/nonCopyable.hpp"
-#include "blc/Socket.hpp"
+#include "blc/socket.hpp"
 
 
 namespace blc {
 	namespace network {
 		/// use two socket to différentiate from lightweight communication and huge data-transaction communication.
-		class client2way : public tools::nonCopyable {
+		class client2way : public symbole::nonCopyable {
 		public:
 			client2way(); ///< construct an none set object
 			client2way(std::string addresse, int port, bool block = true, int mode = SOCK_STREAM, int type = AF_INET); ///< construct a set object
