@@ -26,10 +26,10 @@ void blc::tools::VFiles::write(const std::string &str) const
 			( const_cast <VFiles*> (this) )->_cache.insert(this->_cursor, str);
 			( const_cast <VFiles*> (this) )->_cursor += str.size();
 		} else {
-			throw std::string("ERREUR : Le curseur dépasse la taille du fichier DANS LA FONCTION 'write(const std::string &str) const;' DANS LA CLASSE VFiles");
+			throw blc::error::exception("ERROR : Cursor exeeds the size of file IN FUNCTION 'write(const std::string &str) const;' IN CLASS VFiles");
 		}
 	} else {
-		throw std::string("ERREUR : Tentative d'écriture sur un fichier virtuel fermé DANS LA FONCTION 'write(const std::string &str) const;' DANS LA CLASSE VFiles");
+		throw blc::error::exception("ERROR : Attempt to write on a closed virtual file IN FUNCTION 'write(const std::string &str) const;' IN CLASS VFiles");
 	}
 }
 
@@ -43,11 +43,11 @@ std::string	blc::tools::VFiles::read() const
 			( const_cast <VFiles*> (this) )->_cursor += tmp.size() + 1;
 			return tmp;
 		} else {
-			throw std::string("ERREUR : Le curseur dépasse la taille du fichier DANS LA FONCTION 'read() const;' DANS LA CLASSE VFiles");
+			throw blc::error::exception("ERROR : Cursor exeeds the size of file IN FUNCTION 'read() const;' IN CLASS VFiles");
 		}
 	}
 	else
-		throw std::string("ERREUR : Tentative de lecture sur un fichier virtuel fermé DANS LA FONCTION 'read() const;' DANS LA CLASSE VFiles");
+		throw blc::error::exception("ERROR : Attempt to read a closed virtual file IN FUNCTION 'read() const;' IN CLASS VFiles");
 }
 
 std::string	blc::tools::VFiles::read(const int n) const
@@ -62,10 +62,10 @@ std::string	blc::tools::VFiles::read(const int n) const
 			( const_cast <VFiles*> (this) )->_cursor += n;
 			return tmp;
 		} else {
-			throw std::string("ERREUR : Le curseur dépasse la taille du fichier DANS LA FONCTION 'read(const int n) const;' DANS LA CLASSE VFiles");
+			throw blc::error::exception("ERROR : Cursor exeeds the size of file IN FUNCTION 'read(const int n) const;' IN CLASS VFiles");
 		}
 	} else {
-		throw std::string("ERREUR : Tentative de lecture sur un fichier virtuel fermé DANS LA FONCTION 'read(const int n) const;' DANS LA CLASSE VFiles");
+		throw blc::error::exception("ERROR : Attempt to read a closed virtual file IN FUNCTION 'read(const int n) const;' IN CLASS VFiles");
 	}
 }
 
@@ -118,7 +118,7 @@ void blc::tools::VFiles::refresh()
 		this->_cursor = 0;
 	}
 	else
-		throw std::string("ERREUR: Impossible d'ouvrir le fichier " + this->_fileName + " en lecture DANS LA FONCTION 'refresh();' DANS LA CLASSE VFiles");
+		throw blc::error::exception("ERROR: Impossible to open file " + this->_fileName + " IN FUNCTION 'refresh();' IN CLASS VFiles");
 }
 
 void blc::tools::VFiles::unload()
@@ -132,7 +132,7 @@ void blc::tools::VFiles::align()
 	if(this->_file)  //On test si tout est OK
 		this->_file << this->_cache;
 	else
-		throw std::string("ERREUR: Impossible d'ouvrir le fichier " + this->_fileName + " en lecture DANS LA FONCTION 'align();' DANS LA CLASSE VFiles");
+		throw blc::error::exception("ERROR: Impossible to open file " + this->_fileName + " IN FUNCTION 'align();' IN CLASS VFiles");
 }
 
 int blc::tools::VFiles::tellg() const
@@ -143,7 +143,7 @@ int blc::tools::VFiles::tellg() const
 void blc::tools::VFiles::seekg(const int pos)
 {
 	if (pos > this->_cache.size())
-		throw std::string("ERREUR: Impossible modifier le curseur (valeur trop élevée) DANS LA FONCTION 'seekg();' DANS LA CLASSE VFiles");
+		throw blc::error::exception("ERROR: Impossible to modify cursor (value to hight) IN FUNCTION 'seekg();' IN CLASS VFiles");
 	else
 		this->_cursor = pos;
 }
@@ -160,15 +160,17 @@ void blc::tools::VFiles::seekg(const int pos, const enum seekDir sd)
 	case end:
 		this->seekg(this->gCount());
 		if (pos > 0)
-			throw std::string("ERREUR: Impossible modifier le curseur (valeur trop élevée) DANS LA FONCTION 'seekg();' DANS LA CLASSE VFiles");
+			throw blc::error::exception("ERROR: Impossible to modify cursor (value to hight) IN FUNCTION 'seekg();' IN CLASS VFiles");
 		else if (pos < 0)
+			if (abs(pos) > this->gCount())
+				throw blc::error::exception("ERROR: Impossible to modify cursor (value to low) IN FUNCTION 'seekg();' IN CLASS VFiles");
 			this->seekg(this->tellg() + pos);
 		break;
 	case cur:
 		if (this->tellg() + pos < 0 || this->tellg() + pos > this->gCount())
 		{
 			this->seekg((this->tellg() + pos < 0)? 0 : this->gCount() );
-			throw std::string("ERREUR: Impossible modifier le curseur (valeur trop élevée ou trop base) DANS LA FONCTION 'seekg();' DANS LA CLASSE VFiles");
+			throw blc::error::exception("ERROR: Impossible to modify cursor (value to hight or to low) IN FUNCTION 'seekg();' IN CLASS VFiles");
 		} else
 			this->seekg(this->tellg() + pos);
 		break;
