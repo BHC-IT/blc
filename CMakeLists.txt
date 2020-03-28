@@ -31,6 +31,7 @@ set(SRCS
 	src/socket.cpp
 	src/stream.cpp
 	src/stringOp.cpp
+	src/VFiles.cpp
 	)
 
 if (!WIN32)
@@ -75,6 +76,7 @@ set(HEADERS
 	blc/stringOp.hpp
 	blc/vecteur2.hpp
 	blc/bindTest.hpp
+	blc/VFiles.hpp
 	)
 
 set(CONCEPTS
