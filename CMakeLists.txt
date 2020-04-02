@@ -83,6 +83,10 @@ set(CONCEPTS
 	concept/operable.hpp
 )
 
+set(TEST
+	test/main.cpp
+)
+
 if (!WIN32)
 	set(HEADERS ${HEADERS}
 		include/ForkServer.hpp
@@ -193,3 +197,11 @@ endif()
 
 add_definitions(${GCC_COVERAGE_COMPILE_FLAGS})
 SET(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} ${GCC_COVERAGE_COMPILE_FLAGS}")
+
+add_executable(test ${TEST})
+
+target_link_libraries(test PRIVATE blc)
+target_include_directories(test PRIVATE .)
+set_property(TARGET test PROPERTY CXX_STANDARD 17)
+
+
