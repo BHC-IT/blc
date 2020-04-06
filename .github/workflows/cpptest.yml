@@ -31,4 +31,4 @@ jobs:
     - name: build
       run: cd build && mingw32-make
     - name: test
-      run: cd build && dir && test.exe
+      run: cd build && dir
