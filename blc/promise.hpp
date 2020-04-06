@@ -108,8 +108,7 @@ blc::tools::promise<T> &blc::tools::promise<T>::catcher(std::function<void(blc::
 
 template <typename T>
 void blc::tools::promise<T>::engage() {
-	using std::placeholders;
-	std::function<void(T)> res = std::bind(&blc::tools::promise<T>::resolve, this, _1);
-	std::function<void(blc::error::exception)> rej = std::bind(&blc::tools::promise<T>::reject, this, _1);
+	std::function<void(T)> res = std::bind(&blc::tools::promise<T>::resolve, this, std::placeholders::_1);
+	std::function<void(blc::error::exception)> rej = std::bind(&blc::tools::promise<T>::reject, this, std::placeholders::_1);
 	this->_func(res, rej);
 }
