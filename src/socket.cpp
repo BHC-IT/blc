@@ -251,7 +251,11 @@ bool blc::network::Socket::writable() const {
 
 bool blc::network::Socket::waitRead(unsigned int usec) const {
 	fd_set fds;
-	struct timeval timeout = {0, reinterpret_cast<unsigned int>(usec)};
+	#ifdef __WIN32
+		struct timeval timeout = {0, static_cast<long int>(usec)};
+	#else
+		struct timeval timeout = {0, reinterpret_cast<unsigned int>(usec)};
+	#endif
 
 	FD_ZERO(&fds);
 	FD_SET(this->_socket, &fds);
