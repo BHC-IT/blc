@@ -63,7 +63,7 @@ blc::tools::pipe::pipe(const pipe &other, bool state, bool block) {
 }
 
 blc::tools::pipe::~pipe() {
-	if (*(this->_closed) == true && this->_master == true) {
+	if (this->_closed !== nullptr && *(this->_closed) == true && this->_master == true) {
 		delete this->_closed;
 		this->_closed = nullptr;
 	}
