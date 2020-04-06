@@ -201,7 +201,7 @@ endif()
 add_definitions(${GCC_COVERAGE_COMPILE_FLAGS})
 
 SET(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} ${GCC_COVERAGE_COMPILE_FLAGS}")
-
+set(CMAKE_BUILD_TYPE Debug)
 
 if(test)
 	add_executable(test ${TEST} ${SRCS} ${CONCEPTS} ${HEADERS})

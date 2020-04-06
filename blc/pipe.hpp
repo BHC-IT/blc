@@ -13,6 +13,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 #include <string>
 #include <mutex>
+#include <memory>
 #include "blc/nonCopyable.hpp"
 #include "blc/stream.hpp"
 
@@ -40,93 +41,93 @@ namespace blc {
 			~pipe();
 			///< destructor. delete _closed if true
 
-			pipe		getSlave() const;
+			pipe			getSlave() const;
 			///< return the slave end of the pipe
 
-			pipe		getMaster() const;
+			pipe			getMaster() const;
 			///< return the master end of the pipe
 
-			bool		getBlock() const;
+			bool			getBlock() const;
 			///< return the blocking state
 
-			bool		getState() const;
+			bool			getState() const;
 			///< return the _state (master/slave)
 
-			std::string	*getIn();
+			std::string		*getIn();
 			///< return a pointer on the _in string. hazardous
 
-			std::string	*getOut();
+			std::string		*getOut();
 			///< return a pointer on the _out string. hazardous
 
-			std::mutex	*getInMut();
+			std::mutex		*getInMut();
 			///< return a pointer on the _in mutex. hazardous
 
-			std::mutex	*getOutMut();
+			std::mutex		*getOutMut();
 			///< return a pointer on the _in mutex. hazardous
 
-			bool		*getClosed();
+			std::shared_ptr<bool>	getClosed();
 			///< return a pointer on the _closed boolean. hazardous
 
-			void		setBlock(bool block);
+			void			setBlock(bool block);
 			///< set the blocking state
 
-			bool		switchState();
+			bool			switchState();
 			///< switch the commuter between slave/master
 
-			void		write(const std::string &str) const; /**< the string used depend on commuter state. */
+			void			write(const std::string &str) const; /**< the string used depend on commuter state. */
 			///< write on pipe, C read-like.
 
-			std::string	read() const; /**< the string used depend on commuter state. */
+			std::string		read() const; /**< the string used depend on commuter state. */
 			///< read the pipe, C read-like.
 
-			std::string	read(int n) const; /**< the string used depend on commuter state. */
+			std::string		read(int n) const; /**< the string used depend on commuter state. */
 			///< read the pipe, C read-like.
 
-			void		close(); /**< destroy all pointer except _closed and set it to true */
+			void			close(); /**< destroy all pointer except _closed and set it to true */
 			///< close the pipe.
 
-			bool		readable() const;
+			bool			readable() const;
 			///< return true if the pipe is readable, false otherwise
 
-			bool		writable() const;
+			bool			writable() const;
 			///< return true if the pipe is writable, false otherwise
 
-			bool		isClosed() const;
+			bool			isClosed() const;
 			///< return true if the pipe is close, false otherwise
 
-			void 		waitRead(int usec) const;
+			void 			waitRead(int usec) const;
 			///< wait for the pipe to be readable.
 
-			void 		waitWrite(int usec) const;
+			void 			waitWrite(int usec) const;
 			///< wait for the pipe to be writable.
 
-			pipe 		&operator=(const pipe &other);
+			pipe 			&operator=(const pipe &other);
 			///< assignement operator
 
-			pipe 		&operator<<(const std::string &str);
+			pipe 			&operator<<(const std::string &str);
 			///< write from string to pipe
 
-			pipe 		&operator>>(std::string &str);
+			pipe 			&operator>>(std::string &str);
 			///< read from pipe to string
 
 		protected:
-			bool		push_on(std::string *target, const std::string &str, std::mutex *locker) const;
+			bool			push_on(std::string *target, const std::string &str, std::mutex *locker) const;
 			// push the str on *target and lock/unlock locker. inner working wth security test
 
-			bool		push_out(std::string *target, std::string *str, std::mutex *locker) const;
+			bool			push_out(std::string *target, std::string *str, std::mutex *locker) const;
 			// pull the str from *target and lock/unlock locker. inner working wth security test
 
-			bool		check_block(std::mutex *mutex) const;
+			bool			check_block(std::mutex *mutex) const;
 			// proper check if mutex is used
 
 		private:
-			std::string	*_in;
-			std::mutex	*_inMut;
-			std::string	*_out;
-			std::mutex	*_outMut;
-			bool		_master;
-			bool		_block;
-			bool		*_closed;
+			std::string		*_in;
+			std::mutex		*_inMut;
+			std::string		*_out;
+			std::mutex		*_outMut;
+			bool			_master;
+			bool			_block;
+			std::shared_ptr<bool>	_closed;
 		};
 
 	}  // namespace tools
