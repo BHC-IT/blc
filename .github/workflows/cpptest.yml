@@ -32,6 +32,6 @@ jobs:
     - name: configure
       run: mkdir build && cd build && cmake .. -G "MinGW Makefiles" -D test=true -DCMAKE_SH="CMAKE_SH-NOTFOUND"
     - name: build
-      run: cd build && dir && mingw32-make
+      run: cd build && mingw32-make
     - name: test
       run: cd build && ./test
