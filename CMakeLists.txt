@@ -209,6 +209,9 @@ if(test)
 	target_link_libraries(test Threads::Threads)
 	target_include_directories(test PRIVATE .)
 	set_property(TARGET test PROPERTY CXX_STANDARD 17)
+	if(WIN32)
+		target_link_libraries(test wsock32 ws2_32)
+	endif()
 endif()
 
 
