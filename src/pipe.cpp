@@ -15,7 +15,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 #include "blc/pipe.hpp"
 
 blc::tools::pipe::pipe() : _closed(new bool(false)) {
-
 	this->_in = new std::string;
 	this->_out = new std::string;
 	this->_inMut = new std::mutex;
