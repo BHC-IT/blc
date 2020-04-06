@@ -103,6 +103,7 @@ add_library(objlib OBJECT ${SRCS} ${TEMPLATE} ${HEADERS} ${CONCEPTS})
 
 #set the objlib dummy
 set_property(TARGET objlib PROPERTY POSITION_INDEPENDENT_CODE 1)
+set_property(TARGET objlib PROPERTY CXX_STANDARD 17)
 target_include_directories(objlib PRIVATE .)
 target_compile_features(objlib PUBLIC cxx_nullptr)
 
