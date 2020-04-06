@@ -54,7 +54,7 @@ pair<T, U> pair<T, U>::operator/(const pair<T, U> &other) const
 template <class T, class U>
 bool pair<T, U>::operator==(const pair<T, U> &other) const
 {
-	if (this->first == other.first && this->second = other.second)
+	if (this->first == other.first && this->second == other.second)
 		return (true);
 	return (false);
 }
