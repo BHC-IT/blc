@@ -10,24 +10,24 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 */
 
 #include <thread>
+#include <iostream>
+
 #include "blc/pipe.hpp"
 
-blc::tools::pipe::pipe() {
+blc::tools::pipe::pipe() : _closed(new bool(false)) {
 	this->_in = new std::string;
 	this->_out = new std::string;
 	this->_inMut = new std::mutex;
 	this->_outMut = new std::mutex;
-	this->_closed = new bool(false);
 	this->_master = true;
 	this->_block = false;
 }
 
-blc::tools::pipe::pipe(bool state, bool block) {
+blc::tools::pipe::pipe(bool state, bool block) : _closed(new bool(false)) {
 	this->_in = new std::string;
 	this->_out = new std::string;
 	this->_inMut = new std::mutex;
 	this->_outMut = new std::mutex;
-	this->_closed = new bool(false);
 	this->_master = state;
 	this->_block = block;
 }
@@ -62,11 +62,8 @@ blc::tools::pipe::pipe(const pipe &other, bool state, bool block) {
 	this->_master = state;
 }
 
+
 blc::tools::pipe::~pipe() {
-	if (*(this->_closed) == true && this->_master == true) {
-		delete this->_closed;
-		this->_closed = nullptr;
-	}
 }
 
 blc::tools::pipe blc::tools::pipe::getSlave() const {
@@ -101,9 +98,10 @@ std::mutex *blc::tools::pipe::getOutMut() {
 	return (this->_outMut);
 }
 
-bool *blc::tools::pipe::getClosed() {
+std::shared_ptr<bool> blc::tools::pipe::getClosed() {
 	return (this->_closed);
 }
+
 
 void blc::tools::pipe::setBlock(bool block) {
 	this->_block = block;

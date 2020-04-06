@@ -201,7 +201,7 @@ endif()
 add_definitions(${GCC_COVERAGE_COMPILE_FLAGS})
 
 SET(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} ${GCC_COVERAGE_COMPILE_FLAGS}")
-
+set(CMAKE_BUILD_TYPE Debug)
 
 if(test)
 	add_executable(test ${TEST} ${SRCS} ${CONCEPTS} ${HEADERS})
@@ -209,6 +209,9 @@ if(test)
 	target_link_libraries(test Threads::Threads)
 	target_include_directories(test PRIVATE .)
 	set_property(TARGET test PROPERTY CXX_STANDARD 17)
+	if(WIN32)
+		target_link_libraries(test wsock32 ws2_32)
+	endif()
 endif()
 
 
