@@ -30,8 +30,8 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: configure
-      run: mkdir build && cd build && cmake .. -D test=true
+      run: mkdir build && cd build && cmake .. -G "MinGW Makefiles" -D test=true
     - name: build
-      run: cd build && dir && make
+      run: cd build && dir && mingw32-make
     - name: test
       run: cd build && ./test
