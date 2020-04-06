@@ -85,6 +85,7 @@ set(CONCEPTS
 
 set(TEST
 	test/main.cpp
+	test/pipe.cpp
 )
 
 if (!WIN32)
@@ -190,18 +191,23 @@ if(Doxygen_FOUND)
 		COMMENT "Generating API documentation with Doxygen"
 		VERBATIM)
 
-	message($(CMAKE_CURRENT_SOURCE_DIR))
+	message("-- Doxygen found")
 else ()
 	message("Doxygen not found")
 endif()
 
+
 add_definitions(${GCC_COVERAGE_COMPILE_FLAGS})
+
 SET(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} ${GCC_COVERAGE_COMPILE_FLAGS}")
 
-add_executable(test ${TEST})
 
-target_link_libraries(test PRIVATE blc)
-target_include_directories(test PRIVATE .)
-set_property(TARGET test PROPERTY CXX_STANDARD 17)
+if(test)
+	add_executable(test ${TEST} ${SRCS} ${CONCEPTS} ${HEADERS})
+	target_compile_features(test PUBLIC cxx_nullptr)
+	target_link_libraries(test Threads::Threads)
+	target_include_directories(test PRIVATE .)
+	set_property(TARGET test PROPERTY CXX_STANDARD 17)
+endif()
 
 
