@@ -86,6 +86,7 @@ set(CONCEPTS
 set(TEST
 	test/main.cpp
 	test/pipe.cpp
+	test/protocolCaps.cpp
 )
 
 if (!WIN32)
