@@ -9,7 +9,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
+    - name: install
+      run: pip install --user cpp-coveralls
     - name: Coveralls
-      uses: coverallsapp/github-action@master
+      run: coveralls -r . -t ${{ secrets.coveralls }} --exclude test --exclude build --exclude concept --exclude blc
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
