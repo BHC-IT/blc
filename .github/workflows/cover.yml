@@ -13,5 +13,3 @@ jobs:
       run: pip install --user cpp-coveralls
     - name: Coveralls
       run: coveralls -r . -t ${{ secrets.coveralls }} --exclude test --exclude build --exclude concept --exclude blc
-      with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
