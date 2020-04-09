@@ -1,17 +1,17 @@
 on: ["push", "pull_request"]
 
-name: Coveralls
+name: GCovr
 
 jobs:
 
   build:
-    name: Publish Cover
+    name: Check Cover
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
     - uses: actions/setup-python@v1
     - name: install
-      run: pip install cpp-coveralls
+      run: pip install gcovr
     - name: configure
       run: mkdir build && cd build && cmake -DCMAKE_CXX_FLAGS="-Werror" .. -D test=true
     - name: build
@@ -19,4 +19,4 @@ jobs:
     - name: test
       run: cd build && ./test
     - name: Coveralls
-      run: coveralls -r . -t ${{ secrets.coveralls }}
+      run: gcovr -r .
