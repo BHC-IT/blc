@@ -33,7 +33,7 @@ public:
 
 				std::cout << cl << std::endl; // 5
 
-				usleep(5000);
+				usleep(50);
 				cl << "ok\n"; // 6
 
 				cl.read(); //  7, after close
@@ -105,7 +105,7 @@ TEST_CASE( "socket tested", "[socket]" ) {
 
 	sock.setBlock(false);
 	REQUIRE(sock.waitRead(5) == false);
-	REQUIRE(sock.waitRead(10000) == true);
+	REQUIRE(sock.waitRead(100000) == true);
 	REQUIRE(sock.read() == "ok"); // 6
 
 	sock.close();
