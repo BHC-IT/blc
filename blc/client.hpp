@@ -31,8 +31,6 @@ namespace blc {
 
 		private:
 			Client() = delete;
-			void open();
-			///< the socket is already opened in the context.
 		};
 
 	}  // namespace network

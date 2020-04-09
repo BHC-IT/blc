@@ -63,6 +63,7 @@ blc::network::Server::Server(unsigned int maxClient, unsigned int port, bool blo
 }
 
 blc::network::Server::~Server() {
+	this->close();
 }
 
 void blc::network::Server::setMaxClient(unsigned int maxClient) {

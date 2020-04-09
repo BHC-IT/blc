@@ -11,6 +11,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 #pragma once
 
+#include <tuple>
 #include <string>
 
 
@@ -20,20 +21,21 @@ namespace blc {
 		class serializable {
 		public:
 			serializable() = default;
-			static std::string	hexToString(const std::string &str);
+			static std::string				hexToString(const std::string &str);
 			///< convert char in a string to hexadecimal
 
-			static std::string	stringToHex(const std::string &str);
+			static std::string				stringToHex(const std::string &str);
 			///< convert hexa in a string to char
 
-			virtual std::string	serialize() const = 0;
+			virtual std::string				serialize() const = 0;
 			///< serialize the object. must be implemented in child
 
-			virtual void		unserialize(const std::string &str) = 0;
+			virtual void					unserialize(const std::string &str) = 0;
 			///< unserialize a string and construct the object. must be implemented in child
 
-			static std::string	cut(const std::string &str, char cut);
-			static std::string	cut(std::string &&str, char cut);
+			static std::tuple<std::string, std::string>	cut(const std::string &str, char cut);
+			///< first string is before the cut param, second including and after the cut param
+
 		};
 
 	}  // namespace tools

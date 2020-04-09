@@ -87,6 +87,13 @@ set(TEST
 	test/main.cpp
 	test/pipe.cpp
 	test/protocolCaps.cpp
+	test/protocolFactory.cpp
+	test/stringOp.cpp
+	test/bindTest.cpp
+	test/cinReadable.cpp
+	test/socket.cpp
+	test/stream.cpp
+	test/errorHandle.cpp
 )
 
 if (!WIN32)
@@ -205,6 +212,7 @@ SET(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} ${GCC_COVERAGE_COMPILE_FLAGS}")
 set(CMAKE_BUILD_TYPE Debug)
 
 if(test)
+	SET(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} ${GCC_COVERAGE_COMPILE_FLAGS} -O0 --coverage -g")
 	add_executable(test ${TEST} ${SRCS} ${CONCEPTS} ${HEADERS})
 	target_compile_features(test PUBLIC cxx_nullptr)
 	target_link_libraries(test Threads::Threads)

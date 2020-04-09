@@ -58,19 +58,12 @@ std::string blc::tools::serializable::stringToHex(const std::string &str) {
 	return (ret);
 }
 
-std::string blc::tools::serializable::cut(const std::string &str, char cut) {
+std::tuple<std::string, std::string> blc::tools::serializable::cut(const std::string &str, char cut) {
 	int 		i = str.find(cut);
-	std::string	ret = str.substr(0, i);
-	std::string	tmp = str.substr(i + 1, str.size());
+	std::string	before = str.substr(0, i);
+	std::string	after = str.substr(i + 1, str.size());
 
-	return (ret);
-}
-
-std::string blc::tools::serializable::cut(std::string &&str, char cut) {
-	int 		i = str.find(cut);
-	std::string	ret = str.substr(0, i);
-
-	str = str.substr(i + 1, str.size());
-
-	return (ret);
+	if (i == -1)
+		return (std::make_tuple("", str));
+	return (std::make_tuple(before, after));
 }

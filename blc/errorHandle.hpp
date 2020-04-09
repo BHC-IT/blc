@@ -17,6 +17,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 #ifndef assertError
 	#define assertError(x) std::string(__FILE__) + ": " + __PRETTY_FUNCTION__ + ": " + std::to_string(__LINE__) + ": " + x
+	#define traceError(x) blc::error::exception(x, __FILE__, __PRETTY_FUNCTION__, __LINE__, std::time(NULL))
 #endif
 
 namespace blc {
