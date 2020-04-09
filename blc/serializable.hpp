@@ -35,7 +35,6 @@ namespace blc {
 
 			static std::tuple<std::string, std::string>	cut(const std::string &str, char cut);
 			///< first string is before the cut param, second including and after the cut param
-
 		};
 
 	}  // namespace tools

@@ -31,12 +31,12 @@ public:
 				cl >> tmp;
 				REQUIRE(tmp == "test"); // 4
 
-				std::cout << cl << std::endl;
+				std::cout << cl << std::endl; // 5
 
 				usleep(5000);
-				cl << "ok\n"; // 5
+				cl << "ok\n"; // 6
 
-				cl.read(); //  6
+				cl.read(); //  7, after close
 
 				usleep(5000);
 				REQUIRE(cl.readable() == false);
@@ -105,13 +105,13 @@ TEST_CASE( "socket tested", "[socket]" ) {
 
 	sock.setBlock(false);
 	REQUIRE(sock.waitRead(5) == false);
-	REQUIRE(sock.waitRead(6000) == true);
+	REQUIRE(sock.waitRead(10000) == true);
 	REQUIRE(sock.read() == "ok"); // 6
 
 	sock.close();
 	REQUIRE(sock.isOpen() == false);
 	REQUIRE(sock.isClosed() == true);
-	sock << "test\n"; // 7
+	sock << "test\n"; // 7, bad
 	try {
 		sock.read();
 	} catch (blc::error::exception &e) {
