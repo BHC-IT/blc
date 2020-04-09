@@ -23,12 +23,12 @@ bool blc::tools::isNumber(const std::string& s) {
 	return (true);
 }
 
-std::vector<std::string> blc::tools::cut(const std::string &s, char delim) {
+std::vector<std::string> blc::tools::cut(std::string s, char delim) {
 	std::vector<std::string>	v;
-	std::string 			tmp = s;
 
-	for (auto it = blc::tools::serializable::cut(tmp, delim); it != ""; it = blc::tools::serializable::cut(tmp, delim)) {
-		v.push_back(it);
+	for (auto it = blc::tools::serializable::cut(s, delim); std::get<0>(it) != ""; it = blc::tools::serializable::cut(s, delim)) {
+		v.push_back(std::get<0>(it));
+		s = std::get<1>(it);
 	}
 	return (v);
 }

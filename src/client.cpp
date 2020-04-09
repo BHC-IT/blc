@@ -37,7 +37,3 @@ blc::network::Client::Client(int socket, struct sockaddr addr) : Socket() {
 	this->_port = ntohs(data.sin_port);
 	this->_opened = true;
 }
-
-void blc::network::Client::open() {
-	return;
-}

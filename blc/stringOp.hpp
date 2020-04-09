@@ -18,7 +18,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 namespace blc {
 	namespace tools {
 		bool 				isNumber(const std::string& s);
-		std::vector<std::string>	cut(const std::string &s, char delim = ' ');
+		std::vector<std::string>	cut(std::string s, char delim = ' ');
 		std::vector<std::string>	cut(const std::string &s, std::string delim, bool cut_on = true);
 
 	}  // namespace tools

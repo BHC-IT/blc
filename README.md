@@ -1,3 +1,6 @@
+[![Actions Status](https://github.com/BHC-IT/blc/workflows/C%2FC++%20CI/badge.svg)](https://github.com/BHC-IT/blc/actions)
+[![Actions Status](https://github.com/BHC-IT/blc/workflows/cpplint/badge.svg)](https://github.com/BHC-IT/blc/actions)
+[![Coverage Status](https://coveralls.io/repos/github/BHC-IT/blc/badge.svg?branch=HEAD)](https://coveralls.io/github/BHC-IT/blc?branch=HEAD)
 # BLC
 library with useful tools
 
@@ -49,6 +52,7 @@ bfc::factory(std::string name, Args&& args) // create an actor
 |-- dev/ your project sources
 |-- bfc/ bfc headers
 `-- src/ bfc cpp files
+`
 
 ## TODO
 inter-actor signals

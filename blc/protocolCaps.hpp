@@ -20,11 +20,15 @@ namespace blc {
 		template <typename T, typename U>
 		class protocolCaps {
 		public:
+			protocolCaps() = default;
 			protocolCaps(const T &code, const std::function<int(U)> &callback);
 			///< construct a capsule with the code and callback
 
 			protocolCaps(const protocolCaps<T, U> &other);
 			///< copy constructor
+
+			protocolCaps(protocolCaps<T, U> &&other);
+			///< move constructor
 
 			~protocolCaps() = default;
 
@@ -65,7 +69,6 @@ namespace blc {
 			///< push a parameter and call activate()
 
 		private:
-			protocolCaps() = default;
 			T			_code;
 			std::function<int(U)>	_callback;
 		};
