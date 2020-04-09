@@ -15,8 +15,6 @@ jobs:
       run: cd build && make
     - name: test
       run: cd build && ./test
-    - name: generate cover
-      run: cd build && lcov -c -d CMakeFiles -o cov.info
     - name: Coveralls
       uses: coverallsapp/github-action@master
       with:

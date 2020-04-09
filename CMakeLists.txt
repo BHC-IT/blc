@@ -223,4 +223,4 @@ if(test)
 	endif()
 endif()
 
-
+# lcov --no-external -c -d CMakeFiles -o cov.info && genhtml cov.info -o out
