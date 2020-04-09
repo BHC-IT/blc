@@ -18,5 +18,5 @@ jobs:
       run: cd build && make
     - name: test
       run: cd build && ./test
-    - name: Coveralls
-      run: gcovr -r .
+    - name: gcovr
+      run: gcovr -r . -s -p
