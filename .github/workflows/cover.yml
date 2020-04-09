@@ -8,19 +8,16 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     steps:
-
+      steps:
     - uses: actions/checkout@v1
-
-    - name: Use Node.js 10.x
-      uses: actions/setup-node@v1
-      with:
-        node-version: 10.x
-
-    - name: npm install, make test-coverage
-      run: |
-        npm install
-        make test-coverage
-
+    - name: configure
+      run: mkdir build && cd build && cmake -DCMAKE_CXX_FLAGS="-Werror" .. -D test=true
+    - name: build
+      run: cd build && make
+    - name: test
+      run: cd build && ./test
+    - name: generate cover
+      run: cd build && lcov -c -d CMakeFiles -o cov.info
     - name: Coveralls
       uses: coverallsapp/github-action@master
       with:
