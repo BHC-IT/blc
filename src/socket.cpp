@@ -168,8 +168,8 @@ void blc::network::Socket::open() {
 	}
 	if (connect(this->_socket, (struct sockaddr *)&addr, sizeof(addr)) < 0 && errno != EINPROGRESS)
 		throw blc::error::exception(assertError(strerror(errno)));
-	while (this->writable() == false) continue;
 	this->_opened = true;
+	while (this->writable() == false) continue;
 }
 
 void blc::network::Socket::close() {
@@ -189,7 +189,7 @@ bool blc::network::Socket::isClosed() const {
 
 void blc::network::Socket::write(const std::string &request) const {
 	if (this->_opened == false)
-		return;
+		throw blc::error::exception("not opened");
 	if (::send(this->_socket, request.c_str(), request.size(), MSG_NOSIGNAL) == -1)
 		throw blc::error::exception(strerror(errno));
 }
@@ -210,7 +210,6 @@ std::string blc::network::Socket::read() const {
 }
 
 std::string blc::network::Socket::read(int n) const {
-	std::string	str;
 	char		tmp[n];
 	int		ret;
 
@@ -242,6 +241,8 @@ bool blc::network::Socket::writable() const {
 	fd_set fds;
 	struct timeval timeout = {0, 0};
 
+	if (this->_opened == false)
+		return (false);
 	FD_ZERO(&fds);
 	FD_SET(this->_socket, &fds);
 	if (select(this->_socket + 1, 0, &fds, 0, &timeout) <= 0)
@@ -283,12 +284,12 @@ bool blc::network::Socket::waitWrite(unsigned int usec) const {
 	return (true);
 }
 
-blc::network::Socket &blc::network::Socket::operator<<(const std::string &str) {
+const blc::network::Socket &blc::network::Socket::operator<<(const std::string &str) const {
 	this->write(str);
 	return (*this);
 }
 
-blc::network::Socket &blc::network::Socket::operator>>(std::string &str) {
+const blc::network::Socket &blc::network::Socket::operator>>(std::string &str) const {
 	str = this->read();
 	return (*this);
 }

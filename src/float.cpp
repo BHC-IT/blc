@@ -91,14 +91,15 @@ blc::math::Float &blc::math::Float::operator=(blc::math::Float &&other) {
 	return (*this);
 }
 
-blc::math::Float &blc::math::Float::operator+(double i) {
+blc::math::Float blc::math::Float::operator+(double i) const {
 	blc::math::Float fl(i);
+	blc::math::Float ret;
 
-	*this = *this + fl;
-	return (*this);
+	ret = *this + fl;
+	return (ret);
 }
 
-blc::math::Float &blc::math::Float::operator+(const blc::math::Float &i) {
+blc::math::Float blc::math::Float::operator+(const blc::math::Float &i) const {
 	int diff = this->_E - i.getE();
 	double tmp = i.getNb();
 
@@ -111,18 +112,20 @@ blc::math::Float &blc::math::Float::operator+(const blc::math::Float &i) {
 			diff--;
 		}
 	}
-	*this = blc::math::Float(this->_nb + tmp, this->_E);
-	return (*this);
+	blc::math::Float ret = blc::math::Float(this->_nb + tmp, this->_E);
+	return (ret);
 }
 
-blc::math::Float &blc::math::Float::operator-(double i) {
+blc::math::Float blc::math::Float::operator-(double i) const {
+	blc::math::Float ret;
 	blc::math::Float fl(i);
 
-	*this = *this - fl;
-	return (*this);
+	ret = *this - fl;
+	return (ret);
 }
 
-blc::math::Float &blc::math::Float::operator-(const blc::math::Float &i) {
+blc::math::Float blc::math::Float::operator-(const blc::math::Float &i) const {
+	blc::math::Float ret;
 	int diff = this->_E - i.getE();
 	double tmp = i.getNb();
 
@@ -135,18 +138,20 @@ blc::math::Float &blc::math::Float::operator-(const blc::math::Float &i) {
 			diff--;
 		}
 	}
-	*this = blc::math::Float(this->_nb - tmp, this->_E);
-	return (*this);
+	ret = blc::math::Float(this->_nb - tmp, this->_E);
+	return (ret);
 }
 
-blc::math::Float &blc::math::Float::operator*(double i) {
+blc::math::Float blc::math::Float::operator*(double i) const {
+	blc::math::Float ret;
 	blc::math::Float fl(i);
 
-	*this = *this * fl;
-	return (*this);
+	ret = *this * fl;
+	return (ret);
 }
 
-blc::math::Float &blc::math::Float::operator*(const blc::math::Float &i) {
+blc::math::Float blc::math::Float::operator*(const blc::math::Float &i) const {
+	blc::math::Float ret;
 	int diff = this->_E - i.getE();
 	double tmp = i.getNb();
 
@@ -159,18 +164,20 @@ blc::math::Float &blc::math::Float::operator*(const blc::math::Float &i) {
 			diff--;
 		}
 	}
-	*this = blc::math::Float(this->_nb * tmp, this->_E);
-	return (*this);
+	ret = blc::math::Float(this->_nb * tmp, this->_E);
+	return (ret);
 }
 
-blc::math::Float &blc::math::Float::operator/(double i) {
+blc::math::Float blc::math::Float::operator/(double i) const {
+	blc::math::Float ret;
 	blc::math::Float fl(i);
 
-	*this = *this / fl;
-	return (*this);
+	ret = *this / fl;
+	return (ret);
 }
 
-blc::math::Float &blc::math::Float::operator/(const blc::math::Float &i) {
+blc::math::Float blc::math::Float::operator/(const blc::math::Float &i) const {
+	blc::math::Float ret;
 	int diff = this->_E - i.getE();
 	double tmp = i.getNb();
 
@@ -183,78 +190,62 @@ blc::math::Float &blc::math::Float::operator/(const blc::math::Float &i) {
 			diff--;
 		}
 	}
-	*this = blc::math::Float(this->_nb * tmp, this->_E);
-	return (*this);
+	ret = blc::math::Float(this->_nb / tmp, this->_E);
+	return (ret);
 }
 
-bool blc::math::Float::operator==(double i) {
+bool blc::math::Float::operator==(double i) const {
 	if (this->calculate() == i)
 		return (true);
 	return (false);
 }
 
-bool blc::math::Float::operator==(const blc::math::Float &i) {
-	if (this->_nb != i.getNb())
-		return (false);
-	if (this->_E != i.getE())
+bool blc::math::Float::operator==(const blc::math::Float &i) const {
+	return (this->_nb == i.getNb() && this->_E == i.getE());
+}
+
+bool blc::math::Float::operator!=(double i) const {
+	if (*this == i)
 		return (false);
 	return (true);
 }
 
-bool blc::math::Float::operator>(double i) {
-	if (this->calculate() > i)
-		return (true);
-	return (false);
-}
-
-bool blc::math::Float::operator>(const blc::math::Float &i) {
-	if (this->_E < i.getE())
-		return (false);
-	if (this->_nb <= i.getNb())
+bool blc::math::Float::operator!=(const blc::math::Float &i) const {
+	if (*this == i)
 		return (false);
 	return (true);
 }
 
-bool blc::math::Float::operator<(double i) {
-	if (this->calculate() < i)
-		return (true);
-	return (false);
+bool blc::math::Float::operator<(double i) const {
+	return (this->calculate() < i);
 }
 
-bool blc::math::Float::operator<(const blc::math::Float &i) {
-	if (this->_E > i.getE())
-		return (false);
-	if (this->_nb >= i.getNb())
-		return (false);
-	return (true);
+bool blc::math::Float::operator<(const blc::math::Float &i) const {
+	return (this->calculate() < i.calculate());
 }
 
-bool blc::math::Float::operator>=(double i) {
-	if (this->calculate() >= i)
-		return (true);
-	return (false);
+bool blc::math::Float::operator>(double i) const {
+	return (i < this->calculate());
 }
 
-bool blc::math::Float::operator>=(const blc::math::Float &i) {
-	if (this->_E < i.getE())
-		return (false);
-	if (this->_nb < i.getNb())
-		return (false);
-	return (true);
+bool blc::math::Float::operator>(const blc::math::Float &i) const {
+	return (i < *this);
 }
 
-bool blc::math::Float::operator<=(double i) {
-	if (this->calculate() <= i)
-		return (true);
-	return (false);
+bool blc::math::Float::operator<=(double i) const {
+	return !(*this > i);
 }
 
-bool blc::math::Float::operator<=(const blc::math::Float &i) {
-	if (this->_E > i.getE())
-		return (false);
-	if (this->_nb > i.getNb())
-		return (false);
-	return (true);
+bool blc::math::Float::operator<=(const blc::math::Float &i) const {
+	return !(*this > i);
+}
+
+bool blc::math::Float::operator>=(double i) const {
+	return !(*this < i);
+}
+
+bool blc::math::Float::operator>=(const blc::math::Float &i) const {
+	return !(*this < i);
 }
 
 double blc::math::Float::operator()() const {

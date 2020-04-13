@@ -4,9 +4,9 @@
 
 #include "catch.hpp"
 
-class testServ : public blc::network::Server, public blc::tools::actor<testServ> {
+class testServActor : public blc::network::Server, public blc::tools::actor<testServActor> {
 public:
-	testServ(int port) : Server(2, port, true) {
+	testServActor(int port) : Server(2, port, true) {
 		this->start();
 	}
 
@@ -72,7 +72,7 @@ TEST_CASE( "socket tested", "[socket]" ) {
 	REQUIRE(testable.getType() ==  0);
 
 
-	testServ serv(i);
+	testServActor serv(i);
 
 	usleep(5000);
 	blc::network::Socket sock("127.0.0.1", i);
@@ -111,9 +111,20 @@ TEST_CASE( "socket tested", "[socket]" ) {
 	sock.close();
 	REQUIRE(sock.isOpen() == false);
 	REQUIRE(sock.isClosed() == true);
-	sock << "test\n"; // 7, bad
+	REQUIRE(sock.writable() == false);
+	try {
+		sock << "test\n"; // 7, bad
+	} catch (blc::error::exception &e) {
+		REQUIRE(e.what() == std::string("Error : not opened"));
+	}
 	try {
 		sock.read();
+	} catch (blc::error::exception &e) {
+		REQUIRE(e.what() == std::string("Error : not opened"));
+	}
+
+	try {
+		sock.read(5);
 	} catch (blc::error::exception &e) {
 		REQUIRE(e.what() == std::string("Error : not opened"));
 	}
@@ -123,6 +134,16 @@ TEST_CASE( "socket tested", "[socket]" ) {
 		failer.open();
 	} catch (blc::error::exception &e) {
 	}
+
+	blc::network::Socket google("google.com", 80);
+	try {
+		failer.open();
+	} catch (blc::error::exception &e) {
+	}
+
+	blc::network::Socket sock2("127.0.0.1", i);
+	sock2.open();
+	sock2.open();
 
 	usleep(5000);
 }

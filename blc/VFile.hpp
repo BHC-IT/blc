@@ -19,26 +19,41 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 namespace blc {
 	namespace tools {
-		class VFiles : private symbole::nonCopyable, public stream{
+		enum seekDir {beg, end, cur};
+		class VFile : private symbole::nonCopyable, public stream {
 		public:
-			enum seekDir {beg, end, cur};
-			~VFiles();
+			~VFile();
 			///< destructor
 
-			VFiles(VFiles&& vFile);
+			VFile(VFile&& vFile);
 			///< move constructor
 
-			VFiles 	(const VFiles&) = delete;
+			VFile 	(const VFile&) = delete;
 			///< copy constructor can't be declared
 
-			explicit VFiles(const std::string &fileName);
+			explicit VFile(const std::string &fileName);
 			///< clasic constructor
+
+			std::string	getCache() const;
+			///< return current cach
+
+			void		setCache(std::string cache);
+			///< set current cach
+
+			void		write(const std::string &str) const;
+			///< write on VFile
+
+			std::string	read() const;
+			///< read a ligne of VFile
+
+			std::string	read(const int n) const;
+			///< read n characters of VFile
 
 			void		close();
 			///< disable actions on VFile
 
-			std::string	read() const;
-			///< read a ligne of VFile
+			void		open();
+			///< allow actions on VFile
 
 			bool		readable() const;
 			///< return a boolean to know if we can read VFile
@@ -49,29 +64,17 @@ namespace blc {
 			bool		isClosed() const;
 			///< return a boolean to know if we can do some actions on VFile
 
-			std::string	read(const int n) const;
-			///< read n characters of VFile
-
-			void		write(const std::string &str) const;
-			///< write on VFile
-
-			void		open();
-			///< allow actions on VFile
-
-			void		align();
-			///< write on file the content of VFile's cache
+			void		refresh();
+			///< filled VFile's cache with content of File
 
 			void		unload();
 			///< write on file the content of VFile's cache and disable actions on VFile
 
-			void		refresh();
-			///< filled VFile's cache with content of File
+			void		align();
+			///< write on file the content of VFile's cache
 
 			int		tellg() const;
 			///< return position of cursor in VFile
-
-			int		gCount() const;
-			///< return size of VFile's cache
 
 			void		seekg(const int pos);
 			///< set the cursor at pos
@@ -79,6 +82,8 @@ namespace blc {
 			void		seekg(const int pos, const enum seekDir sd);
 			///< move cursor of pos square from sd (sd can take three value : beg for begin of VFile, end for end of VFile and cur for current place of cursor in VFile )
 
+			int		gCount() const;
+			///< return size of VFile's cache
 
 		private:
 			std::fstream	_file;

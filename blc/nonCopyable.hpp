@@ -16,10 +16,10 @@ namespace blc {
 		/// set the copy constructor and copy operator to private to get a compilation error when copied in code. inherite this to class that dont be sensfully copied
 		class nonCopyable {
 		public:
-			nonCopyable();
+			nonCopyable() = default;
 		private:
-			nonCopyable(const nonCopyable &other);
-			nonCopyable &operator=(const nonCopyable &other);
+			nonCopyable(const nonCopyable &other) = delete;
+			nonCopyable &operator=(const nonCopyable &other) = delete;
 		};
 
 	}  // namespace symbole

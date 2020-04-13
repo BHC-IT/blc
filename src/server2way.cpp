@@ -41,7 +41,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 	#define socklen_t int
 #endif
 
-blc::network::server2way::server2way(unsigned int maxClient, unsigned int port) : Server(maxClient, port) {
+blc::network::server2way::server2way(unsigned int maxClient, unsigned int port) : Server(maxClient, port, false) {
 	this->handle([this](int sock, struct sockaddr addr, int port) {
 		blc::network::Client		client(sock, addr);
 		port = findFreePort();
@@ -115,20 +115,6 @@ bool blc::network::server2way::isIn(int id) const {
 	if (this->_childPipe.find(id) == this->_childPipe.end())
 		return (false);
 	return (true);
-}
-
-void blc::network::server2way::launchThread(int port, int sock, struct sockaddr client) {
-	try {
-		std::thread thread(this->_handle, sock, client, port);
-		thread.detach();
-	} catch (const blc::error::exception &e) {
-		if (std::string(e.what()) == std::string("Address already in use")) {
-			port = 1000 * ((std::rand() % 10) + 1) + 100 * ((std::rand() % 10) + 1) + 10 * ((std::rand() % 10) + 1) + 1 * ((std::rand() % 10) + 1);
-			this->launchThread(port, sock, client);
-		} else {
-			throw blc::error::exception(std::string("s2w: ") + e.what());
-		}
-	}
 }
 
 void blc::network::server2way::runThreaded() {

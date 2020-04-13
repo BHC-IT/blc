@@ -20,7 +20,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 namespace blc {
 	namespace network {
 		/// host a 2 way server accepting a connection from a blc::network::client2way. run child in their dedicated thread
-		class server2way : public Server{
+		class server2way : public Server {
 		public:
 			server2way(unsigned int maxClient, unsigned int port);
 			~server2way();
@@ -37,6 +37,8 @@ namespace blc {
 			///< add a function called by child to handle the network communication
 
 			std::thread			start();
+			///< launch the main two way server in is own thread
+
 			tools::pipe			retrivePipe(const std::string &str) const;
 			tools::pipe			retrivePipe(int id) const;
 			bool				isIn(int id) const;
@@ -46,13 +48,12 @@ namespace blc {
 			///< return the map of pipe.
 
 			void				runThreaded();
-			///< hook function member to run the server in his own thread
+			///< hook function member to run the handle function in his own thread
 
 			void				run(void *userData);
 			///< function not implmented
 
 		private:
-			void				launchThread(int port, int sock, struct sockaddr client);
 			void				parsePipe(const std::string &str);
 			void				finalize2way(const blc::network::Client &client, const blc::network::Client &data);
 			void				setUp2way(int sock, struct sockaddr addr, void *data);

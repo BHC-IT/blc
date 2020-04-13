@@ -19,7 +19,6 @@ set(SRCS
 	src/fileSize.cpp
 	src/float.cpp
 	src/global.cpp
-	src/nonCopyable.cpp
 	src/pipe.cpp
 	src/pipeCluster.cpp
 	src/promise.cpp
@@ -31,7 +30,7 @@ set(SRCS
 	src/socket.cpp
 	src/stream.cpp
 	src/stringOp.cpp
-	src/VFiles.cpp
+	src/VFile.cpp
 	)
 
 if (!WIN32)
@@ -76,7 +75,7 @@ set(HEADERS
 	blc/stringOp.hpp
 	blc/vecteur2.hpp
 	blc/bindTest.hpp
-	blc/VFiles.hpp
+	blc/VFile.hpp
 	)
 
 set(CONCEPTS
@@ -94,6 +93,15 @@ set(TEST
 	test/socket.cpp
 	test/stream.cpp
 	test/errorHandle.cpp
+	test/server.cpp
+	test/fileSize.cpp
+	test/float.cpp
+	test/serializable.cpp
+	test/pipeCluster.cpp
+	test/regex.cpp
+	test/twoWay.cpp
+	test/singleServer.cpp
+	test/VFile.cpp
 )
 
 if (!WIN32)

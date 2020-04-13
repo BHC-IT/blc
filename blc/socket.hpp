@@ -117,10 +117,10 @@ namespace blc {
 			bool 		waitWrite(unsigned int usec) const;
 			///< wait usec µsec for the socket to be writable.
 
-			Socket		&operator<<(const std::string &str);
+			const Socket	&operator<<(const std::string &str) const;
 			///< call write with the str string.
 
-			Socket		&operator>>(std::string &str);
+			const Socket	&operator>>(std::string &str) const;
 			///< call read and write the response in the string str.
 
 		protected:

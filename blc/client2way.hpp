@@ -125,10 +125,10 @@ namespace blc {
 			bool		readableData() const;
 			///< check if the data socket is readable.
 
-			bool		writeableComm() const;
+			bool		writableComm() const;
 			///< check if the communication socket is writable.
 
-			bool		writeableData() const;
+			bool		writableData() const;
 			///< check if the data socket is writable.
 
 			bool		waitReadComm(int usec) const;
