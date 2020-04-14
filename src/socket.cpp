@@ -147,7 +147,7 @@ void blc::network::Socket::open() {
 		throw blc::error::exception("non set connection");
 	else if (this->_opened == true)
 		return;
-	this->_socket = socket(this->_type, this->_mode | (SOCK_NONBLOCK * (1 - this->_block)), 0);
+	this->_socket = ::socket(this->_type, this->_mode | (SOCK_NONBLOCK * (1 - this->_block)), 0);
 	if (this->_socket == -1)
 		throw blc::error::exception(assertError(strerror(errno)));
 	#ifdef __WIN32
