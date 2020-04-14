@@ -132,9 +132,9 @@ void blc::tools::VFile::align() {
 		ofs.open(this->_fileName, std::ofstream::out | std::ofstream::trunc);
 		ofs << this->_cache;
 		ofs.close();
-	}
-	else
+	} else {
 		throw blc::error::exception("Impossible to open file " + this->_fileName);
+	}
 }
 
 int blc::tools::VFile::tellg() const {
