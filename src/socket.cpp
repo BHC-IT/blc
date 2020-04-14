@@ -14,6 +14,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 #include <string.h>
 #include <iostream>
 #include <stdio.h>
+#include <chrono>
+#include <thread>
 
 #ifdef __WIN32
 	#include <winsock2.h>
@@ -205,6 +207,7 @@ std::string blc::network::Socket::read() const {
 		if (tmp == '\n' || tmp == '\0')
 			break;
 		str += tmp;
+		std::this_thread::sleep_for(std::chrono::duration<double, std::milli>(1));
 	}
 	return (str);
 }

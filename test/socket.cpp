@@ -25,7 +25,7 @@ public:
 				cl << "ok\n";  // 3
 
 
-				usleep(5000);
+				std::this_thread::sleep_for(std::chrono::duration<double, std::milli>(10));
 				std::string tmp;
 
 				cl >> tmp;
@@ -33,12 +33,12 @@ public:
 
 				std::cout << cl << std::endl; // 5
 
-				usleep(50);
+				std::this_thread::sleep_for(std::chrono::duration<double, std::milli>(10));
 				cl << "ok\n"; // 6
 
 				cl.read(); //  7, after close
 
-				usleep(5000);
+				std::this_thread::sleep_for(std::chrono::duration<double, std::milli>(10));
 				REQUIRE(cl.readable() == false);
 				this->kill();
 			}
@@ -74,7 +74,7 @@ TEST_CASE( "socket tested", "[socket]" ) {
 
 	testServActor serv(i);
 
-	usleep(5000);
+	std::this_thread::sleep_for(std::chrono::duration<double, std::milli>(10));
 	blc::network::Socket sock("127.0.0.1", i);
 	sock.open();
 
@@ -92,7 +92,7 @@ TEST_CASE( "socket tested", "[socket]" ) {
 	REQUIRE(sock.readable() == false);
 	sock << "ok\n"; // 2
 
-	usleep(5000);
+	std::this_thread::sleep_for(std::chrono::duration<double, std::milli>(10));
 	REQUIRE(sock.readable() == true);
 	REQUIRE(sock.writable() == true);
 	REQUIRE(sock.isOpen() == true);
@@ -145,5 +145,5 @@ TEST_CASE( "socket tested", "[socket]" ) {
 	sock2.open();
 	sock2.open();
 
-	usleep(5000);
+	std::this_thread::sleep_for(std::chrono::duration<double, std::milli>(10));
 }
