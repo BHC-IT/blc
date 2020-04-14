@@ -31,7 +31,7 @@ jobs:
     - name: build
       run: cd build && make
     - name: test
-      run: cd build && ./test
+      run: cd build && ./test -s
 
   build-windows:
 
