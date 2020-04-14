@@ -38,7 +38,7 @@ TEST_CASE( "twoWay tested", "[twoWay]" ) {
 		REQUIRE(pipe.read() == "ok");
 
 		pipe.write("finish\n");
-		std::this_thread::sleep_for(std::chrono::duration<double, std::milli>(10));
+		std::this_thread::sleep_for(std::chrono::duration<double, std::milli>(500));
 	});
 
 	serv.getPipe() << "ok\n";
