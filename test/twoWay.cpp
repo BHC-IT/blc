@@ -26,8 +26,8 @@ TEST_CASE( "twoWay tested", "[twoWay]" ) {
 		pipe.waitRead(10);
 		REQUIRE(pipe.read() == "ok");
 
-		comm.waitRead(10);
-		data.waitRead(10);
+		comm.waitRead(1000);
+		data.waitRead(1000);
 		REQUIRE(comm.read() == "ok");
 		REQUIRE(data.read() == "test");
 
