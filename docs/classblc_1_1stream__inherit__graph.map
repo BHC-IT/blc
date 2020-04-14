@@ -1,0 +1,7 @@
+<map id="blc::stream" name="blc::stream">
+<area shape="rect" id="node1" title="stream abstraction to construct stream in the blc fashion" alt="" coords="186,5,310,229"/>
+<area shape="rect" id="node2" href="$classblc_1_1network_1_1_socket.html" title="wrap&#45;up the unix socket" alt="" coords="5,299,160,611"/>
+<area shape="rect" id="node4" href="$classblc_1_1tools_1_1pipe.html" title="virtual abstraction of pipe usable in multiple thread. use a master and slave end...." alt="" coords="185,277,311,633"/>
+<area shape="rect" id="node5" href="$classblc_1_1tools_1_1_v_file.html" title=" " alt="" coords="336,314,456,597"/>
+<area shape="rect" id="node3" href="$classblc_1_1network_1_1_client.html" title="a class that can be built with the information provided by the accept function or the data passed to ..." alt="" coords="9,681,157,773"/>
+</map>

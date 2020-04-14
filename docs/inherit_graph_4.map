@@ -1,0 +1,12 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$classblc_1_1symbole_1_1non_copyable.html" title="set the copy constructor and copy operator to private to get a compilation error when copied in code...." alt="" coords="5,107,204,133"/>
+<area shape="rect" id="node2" href="$classblc_1_1network_1_1client2way.html" title="use two socket to différentiate from lightweight communication and huge data&#45;transaction communicatio..." alt="" coords="252,81,433,108"/>
+<area shape="rect" id="node3" href="$classblc_1_1network_1_1_server.html" title="server object. the run function must be implemented in the child." alt="" coords="267,31,419,57"/>
+<area shape="rect" id="node6" href="$classblc_1_1network_1_1_socket.html" title="wrap&#45;up the unix socket" alt="" coords="265,183,420,209"/>
+<area shape="rect" id="node8" href="$classblc_1_1tools_1_1_v_file.html" title=" " alt="" coords="283,132,403,159"/>
+<area shape="rect" id="node4" href="$classblc_1_1network_1_1server2way.html" title="host a 2 way server accepting a connection from a blc::network::client2way. run child in their dedica..." alt="" coords="483,56,670,83"/>
+<area shape="rect" id="node5" href="$classblc_1_1network_1_1single_server.html" title="server that will host only one connection. useful for handeling data connection" alt="" coords="481,5,672,32"/>
+<area shape="rect" id="node7" href="$classblc_1_1network_1_1_client.html" title="a class that can be built with the information provided by the accept function or the data passed to ..." alt="" coords="503,183,651,209"/>
+<area shape="rect" id="node9" href="$classblc_1_1stream.html" title="stream abstraction to construct stream in the blc fashion" alt="" coords="57,183,152,209"/>
+<area shape="rect" id="node10" href="$classblc_1_1tools_1_1pipe.html" title="virtual abstraction of pipe usable in multiple thread. use a master and slave end...." alt="" coords="284,233,401,260"/>
+</map>

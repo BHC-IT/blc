@@ -1,0 +1,11 @@
+<map id="TEST_CASE" name="TEST_CASE">
+<area shape="rect" id="node1" title=" " alt="" coords="5,180,100,207"/>
+<area shape="rect" id="node2" href="$namespaceblc_1_1network.html#a1208ba0a9578c5e266e2f70721660488" title=" " alt="" coords="165,5,351,32"/>
+<area shape="rect" id="node4" href="$classblc_1_1network_1_1single_server.html#a77d509dfb020a069dd9fe516e92c8b7d" title=" " alt="" coords="148,56,368,83"/>
+<area shape="rect" id="node5" href="$classblc_1_1error_1_1exception.html#a0c7ce831895a4738f7c0fe39ee80d4a1" title="return the error message" alt="" coords="182,107,334,149"/>
+<area shape="rect" id="node6" href="$classblc_1_1network_1_1single_server.html#a21ac550679bd5663e402fab63d02d2f3" title="take the function to be called when a client arise" alt="" coords="163,173,353,214"/>
+<area shape="rect" id="node7" href="$classblc_1_1network_1_1_socket.html#a37455edad5fe6f490b5790b11b43bd4e" title="wait usec µsec for the socket to be readable." alt="" coords="181,238,335,279"/>
+<area shape="rect" id="node8" href="$classblc_1_1network_1_1_socket.html#ad0dd558d26603736dba26268bc4c14ff" title="read a string from the socket" alt="" coords="181,303,335,345"/>
+<area shape="rect" id="node9" href="$classblc_1_1network_1_1_server.html#aea63903508cc8d196cfc69140a523401" title="kill the server." alt="" coords="182,369,334,410"/>
+<area shape="rect" id="node3" href="$namespaceblc_1_1network.html#aa504034c7b5fa66bdd895b9a6fb89ce4" title=" " alt="" coords="416,5,591,32"/>
+</map>

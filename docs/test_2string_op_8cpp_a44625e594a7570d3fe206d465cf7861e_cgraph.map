@@ -1,0 +1,6 @@
+<map id="TEST_CASE" name="TEST_CASE">
+<area shape="rect" id="node1" title=" " alt="" coords="5,31,100,57"/>
+<area shape="rect" id="node2" href="$namespaceblc_1_1tools.html#a842c5a0b0d7043db9036cde512086f17" title=" " alt="" coords="148,5,300,32"/>
+<area shape="rect" id="node3" href="$namespaceblc_1_1tools.html#a8882503553f746d76fe19345e6b5c806" title=" " alt="" coords="169,56,279,83"/>
+<area shape="rect" id="node4" href="$classblc_1_1tools_1_1serializable.html#ad8db2a48482dab7f884ea370046d8e87" title="first string is before the cut param, second including and after the cut param" alt="" coords="348,56,540,83"/>
+</map>

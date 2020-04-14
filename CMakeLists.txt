@@ -2,7 +2,7 @@
 cmake_minimum_required(VERSION 3.1)
 project(blc)
 
-set(blc_MAJOR_VERSION 0)
+set(blc_MAJOR_VERSION 1)
 set(blc_MINOR_VERSION 1)
 set(blc_PATCH_VERSION 0)
 set(blc_VERSION
@@ -210,7 +210,7 @@ if(Doxygen_FOUND)
 
 	message("-- Doxygen found")
 else ()
-	message("Doxygen not found")
+	message("-- Doxygen not found")
 endif()
 
 

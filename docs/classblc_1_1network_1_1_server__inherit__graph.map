@@ -1,0 +1,6 @@
+<map id="blc::network::Server" name="blc::network::Server">
+<area shape="rect" id="node1" title="server object. the run function must be implemented in the child." alt="" coords="127,160,283,575"/>
+<area shape="rect" id="node3" href="$classblc_1_1network_1_1server2way.html" title="host a 2 way server accepting a connection from a blc::network::client2way. run child in their dedica..." alt="" coords="5,623,192,949"/>
+<area shape="rect" id="node4" href="$classblc_1_1network_1_1single_server.html" title="server that will host only one connection. useful for handeling data connection" alt="" coords="217,696,407,876"/>
+<area shape="rect" id="node2" href="$classblc_1_1symbole_1_1non_copyable.html" title="set the copy constructor and copy operator to private to get a compilation error when copied in code...." alt="" coords="106,5,305,112"/>
+</map>

@@ -1,0 +1,4 @@
+<map id="blc::tools::pipe" name="blc::tools::pipe">
+<area shape="rect" id="node1" title="virtual abstraction of pipe usable in multiple thread. use a master and slave end...." alt="" coords="5,277,132,633"/>
+<area shape="rect" id="node2" href="$classblc_1_1stream.html" title="stream abstraction to construct stream in the blc fashion" alt="" coords="7,5,131,229"/>
+</map>

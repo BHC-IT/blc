@@ -1,0 +1,15 @@
+<map id="TEST_CASE" name="TEST_CASE">
+<area shape="rect" id="node1" title=" " alt="" coords="5,359,100,386"/>
+<area shape="rect" id="node2" href="$classblc_1_1tools_1_1_v_file.html#a078ef590d781d56a11d8bb1c4c8f978b" title="return a boolean to know if we can do some actions on VFile" alt="" coords="163,5,291,47"/>
+<area shape="rect" id="node3" href="$classblc_1_1tools_1_1_v_file.html#a56377d6e5d9443557d09953d1af3fab7" title="return a boolean to know if we can read VFile" alt="" coords="163,71,291,112"/>
+<area shape="rect" id="node4" href="$classblc_1_1tools_1_1_v_file.html#af815c2663ab10c8c76e22d7c6ccac3e8" title="return a boolean to know if we can write on VFile" alt="" coords="163,136,291,177"/>
+<area shape="rect" id="node5" href="$classblc_1_1tools_1_1_v_file.html#aa77075bf6a371e17c942e9a60ac2f8bd" title="read a ligne of VFile" alt="" coords="148,202,305,229"/>
+<area shape="rect" id="node6" href="$classblc_1_1tools_1_1_v_file.html#a191cafab10f857ebc974cc2fbc8b93f2" title="disable actions on VFile" alt="" coords="163,253,291,295"/>
+<area shape="rect" id="node7" href="$classblc_1_1error_1_1exception.html#a0c7ce831895a4738f7c0fe39ee80d4a1" title="return the error message" alt="" coords="151,319,303,360"/>
+<area shape="rect" id="node8" href="$classblc_1_1tools_1_1_v_file.html#a039b1f5b839e7f78294bb3d085428912" title="return size of VFile&#39;s cache" alt="" coords="163,384,291,425"/>
+<area shape="rect" id="node9" href="$classblc_1_1tools_1_1_v_file.html#a2aa3d21f69040f468ece563ea28906e7" title="return position of cursor in VFile" alt="" coords="163,449,291,491"/>
+<area shape="rect" id="node10" href="$classblc_1_1tools_1_1_v_file.html#ab2e6149a506b93c31bc384b7ef1a4bd0" title="set the cursor at pos" alt="" coords="163,515,291,556"/>
+<area shape="rect" id="node11" href="$classblc_1_1tools_1_1_v_file.html#a436906dd3278641cf65e309c5b025f12" title="write on VFile" alt="" coords="163,580,291,621"/>
+<area shape="rect" id="node12" href="$classblc_1_1tools_1_1_v_file.html#a8858836965f54f8193f199530f153909" title="write on file the content of VFile&#39;s cache and disable actions on VFile" alt="" coords="163,645,291,687"/>
+<area shape="rect" id="node13" href="$classblc_1_1tools_1_1_v_file.html#a3f873d6c75c92ebf7793ee93b536cd11" title="set current cach" alt="" coords="163,711,291,752"/>
+</map>
