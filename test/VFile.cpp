@@ -63,8 +63,6 @@ TEST_CASE( "VFile tested", "[VFile]" ) {
 
 	file2.write("ok\n");
 
-	std::cout << file2.getCache() << std::endl;
-
 	file2.unload();
 
 	blc::tools::VFile file3("../test/VFile.test");

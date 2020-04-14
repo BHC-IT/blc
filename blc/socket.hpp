@@ -11,7 +11,9 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 #pragma once
 
-#ifdef __WIN32__
+#ifdef __WIN32
+	#include <winsock2.h>
+#elif __WIN64
 	#include <winsock2.h>
 #elif __linux__
 	#include <sys/socket.h>
@@ -27,6 +29,37 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 	#include <sys/types.h>
 	#include <arpa/inet.h>
 	#include <netdb.h>
+#endif
+#ifndef SOCK_NONBLOCK
+	#ifndef O_NONBLOCK
+		#define SOCK_NONBLOCK 0
+	#else
+		#define SOCK_NONBLOCK O_NONBLOCK
+	#endif
+#endif
+#ifndef MSG_NOSIGNAL
+	#ifdef SO_NOSIGPIPE
+		#define MSG_NOSIGNAL SO_NOSIGPIPE
+		#define CEPH_USE_SO_NOSIGPIPE
+	# else
+		#define MSG_NOSIGNAL 0
+	#endif
+#endif
+
+#ifndef MSG_DONTWAIT
+	#define MSG_DONTWAIT 0
+#endif
+
+#ifndef EINPROGRESS
+	#ifdef WSAEINPROGRESS
+		#define EINPROGRESS WSAEINPROGRESS
+	#else
+		#error no in progress error
+	#endif
+#endif
+
+#ifndef INADDR_NONE
+	#define INADDR_NONE  -1
 #endif
 
 #include <string>

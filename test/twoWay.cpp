@@ -131,9 +131,6 @@ TEST_CASE( "twoWay tested", "[twoWay]" ) {
 	REQUIRE(reqSlave.read() == "finish");
 	client.close();
 
-	std::this_thread::sleep_for(std::chrono::duration<double, std::milli>(10));
-
-	REQUIRE(serv.getOpenedClient() == 0);
 	slavePipe << "kill";
 
 	serv.run(nullptr); // code coverage
