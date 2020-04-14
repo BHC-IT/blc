@@ -1,0 +1,4 @@
+<map id="blc::network::Server::Server" name="blc::network::Server::Server">
+<area shape="rect" id="node1" title="set server information needed to run" alt="" coords="5,5,157,47"/>
+<area shape="rect" id="node2" href="$classblc_1_1network_1_1_server.html#ad663d9ac0e8576fc412320b46cbabd43" title="start to listen." alt="" coords="205,5,357,47"/>
+</map>

@@ -1,0 +1,8 @@
+<map id="testServActor::lifeCycle" name="testServActor::lifeCycle">
+<area shape="rect" id="node1" title=" " alt="" coords="5,107,180,134"/>
+<area shape="rect" id="node2" href="$classtest_serv_actor.html#a06afedbc8aab0951c9591584a487d306" title=" " alt="" coords="228,107,367,134"/>
+<area shape="rect" id="node3" href="$classblc_1_1network_1_1_server.html#a6f49cd92627324a79902bd0eaefb1ea8" title=" " alt="" coords="416,5,568,47"/>
+<area shape="rect" id="node4" href="$classblc_1_1network_1_1_socket.html#ad0dd558d26603736dba26268bc4c14ff" title="read a string from the socket" alt="" coords="415,71,569,112"/>
+<area shape="rect" id="node5" href="$namespace_catch.html#a50af73c5a37ad5c6558df4ce4a275e83" title=" " alt="" coords="445,137,539,163"/>
+<area shape="rect" id="node6" href="$classblc_1_1network_1_1_server.html#aea63903508cc8d196cfc69140a523401" title="kill the server." alt="" coords="416,188,568,229"/>
+</map>

@@ -1,0 +1,10 @@
+<map id="blc::symbole::nonCopyable" name="blc::symbole::nonCopyable">
+<area shape="rect" id="node1" title="set the copy constructor and copy operator to private to get a compilation error when copied in code...." alt="" coords="302,5,501,112"/>
+<area shape="rect" id="node2" href="$classblc_1_1network_1_1client2way.html" title="use two socket to différentiate from lightweight communication and huge data&#45;transaction communicatio..." alt="" coords="28,248,209,487"/>
+<area shape="rect" id="node3" href="$classblc_1_1network_1_1_server.html" title="server object. the run function must be implemented in the child." alt="" coords="234,160,390,575"/>
+<area shape="rect" id="node6" href="$classblc_1_1network_1_1_socket.html" title="wrap&#45;up the unix socket" alt="" coords="415,211,569,523"/>
+<area shape="rect" id="node8" href="$classblc_1_1tools_1_1_v_file.html" title=" " alt="" coords="593,226,713,509"/>
+<area shape="rect" id="node4" href="$classblc_1_1network_1_1server2way.html" title="host a 2 way server accepting a connection from a blc::network::client2way. run child in their dedica..." alt="" coords="5,623,192,949"/>
+<area shape="rect" id="node5" href="$classblc_1_1network_1_1single_server.html" title="server that will host only one connection. useful for handeling data connection" alt="" coords="217,696,407,876"/>
+<area shape="rect" id="node7" href="$classblc_1_1network_1_1_client.html" title="a class that can be built with the information provided by the accept function or the data passed to ..." alt="" coords="431,740,579,832"/>
+</map>

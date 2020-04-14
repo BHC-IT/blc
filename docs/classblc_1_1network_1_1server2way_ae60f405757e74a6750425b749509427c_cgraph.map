@@ -1,0 +1,4 @@
+<map id="blc::network::server2way::start" name="blc::network::server2way::start">
+<area shape="rect" id="node1" title="launch the main two way server in is own thread" alt="" coords="5,5,192,47"/>
+<area shape="rect" id="node2" href="$classblc_1_1network_1_1server2way.html#ab8c66d05c202e38bb6c3748c84be863d" title="hook function member to run the handle function in his own thread" alt="" coords="240,5,427,47"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="blc::tools::cut" name="blc::tools::cut">
+<area shape="rect" id="node1" title=" " alt="" coords="5,5,115,32"/>
+<area shape="rect" id="node2" href="$namespaceblc_1_1tools.html#a8882503553f746d76fe19345e6b5c806" title=" " alt="" coords="163,5,272,32"/>
+<area shape="rect" id="node3" href="$classblc_1_1tools_1_1serializable.html#ad8db2a48482dab7f884ea370046d8e87" title="first string is before the cut param, second including and after the cut param" alt="" coords="320,5,512,32"/>
+</map>

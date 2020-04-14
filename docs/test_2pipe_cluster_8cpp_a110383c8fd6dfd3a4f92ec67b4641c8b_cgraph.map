@@ -1,0 +1,9 @@
+<map id="TEST_CASE" name="TEST_CASE">
+<area shape="rect" id="node1" title=" " alt="" coords="5,129,100,156"/>
+<area shape="rect" id="node2" href="$classblc_1_1tools_1_1pipe.html#afe7272d2b90db117be7d36e5ee42e151" title="return the slave end of the pipe" alt="" coords="148,5,331,32"/>
+<area shape="rect" id="node3" href="$classblc_1_1tools_1_1pipe_cluster.html#a9b4a60ede489d2f9cd65be4dabee45e3" title=" " alt="" coords="158,57,321,98"/>
+<area shape="rect" id="node4" href="$classblc_1_1tools_1_1pipe_cluster.html#a20126a63618a56c925624fc32a8557fa" title=" " alt="" coords="158,122,321,163"/>
+<area shape="rect" id="node5" href="$classblc_1_1tools_1_1pipe_cluster.html#a822a2ae63f90a9d46ad05b4f7014439f" title=" " alt="" coords="158,187,321,229"/>
+<area shape="rect" id="node6" href="$classblc_1_1tools_1_1pipe_cluster.html#ab7b4b3f36a498d0d2d5a2290eabf66e8" title=" " alt="" coords="158,253,321,294"/>
+<area shape="rect" id="node7" href="$classblc_1_1tools_1_1pipe.html#a4d7f697893e06282587163717ab6d45d" title="write on pipe, C read&#45;like." alt="" coords="379,260,537,287"/>
+</map>

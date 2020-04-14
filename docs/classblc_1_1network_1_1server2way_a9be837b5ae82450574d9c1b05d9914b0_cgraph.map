@@ -1,0 +1,11 @@
+<map id="blc::network::server2way::server2way" name="blc::network::server2way::server2way">
+<area shape="rect" id="node1" title=" " alt="" coords="5,181,192,223"/>
+<area shape="rect" id="node2" href="$classblc_1_1network_1_1_server.html#acdaec511384d2d54f556d29d78dbd0ed" title=" " alt="" coords="274,5,426,47"/>
+<area shape="rect" id="node3" href="$namespaceblc_1_1network.html#a1208ba0a9578c5e266e2f70721660488" title=" " alt="" coords="257,71,443,98"/>
+<area shape="rect" id="node5" href="$classblc_1_1network_1_1single_server.html#a21ac550679bd5663e402fab63d02d2f3" title="take the function to be called when a client arise" alt="" coords="255,123,445,164"/>
+<area shape="rect" id="node6" href="$classblc_1_1tools_1_1pipe.html#afe7272d2b90db117be7d36e5ee42e151" title="return the slave end of the pipe" alt="" coords="259,189,441,215"/>
+<area shape="rect" id="node7" href="$classblc_1_1tools_1_1pipe.html#a4d7f697893e06282587163717ab6d45d" title="write on pipe, C read&#45;like." alt="" coords="271,239,429,266"/>
+<area shape="rect" id="node8" href="$classblc_1_1tools_1_1pipe.html#a136d6ea0f78b96a9a2b3237b03219f1d" title="close the pipe." alt="" coords="271,290,429,317"/>
+<area shape="rect" id="node9" href="$classblc_1_1network_1_1single_server.html#a77d509dfb020a069dd9fe516e92c8b7d" title=" " alt="" coords="240,341,460,367"/>
+<area shape="rect" id="node4" href="$namespaceblc_1_1network.html#aa504034c7b5fa66bdd895b9a6fb89ce4" title=" " alt="" coords="508,71,683,98"/>
+</map>

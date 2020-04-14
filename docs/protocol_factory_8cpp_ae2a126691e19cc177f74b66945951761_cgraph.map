@@ -1,0 +1,8 @@
+<map id="TEST_CASE" name="TEST_CASE">
+<area shape="rect" id="node1" title=" " alt="" coords="5,143,100,170"/>
+<area shape="rect" id="node2" href="$classblc_1_1tools_1_1protocol_caps.html#a3de6cbe476497c8024b8bcea750f9eb0" title="set the code of he capsule" alt="" coords="148,5,323,47"/>
+<area shape="rect" id="node3" href="$classblc_1_1tools_1_1protocol_caps.html#a0300d9583c0a12b9a039e448bab8fd5d" title="return the code of the capsule" alt="" coords="148,71,323,112"/>
+<area shape="rect" id="node4" href="$classblc_1_1tools_1_1protocol_caps.html#a01e21797a1a6bda5a93ed271b002817b" title="give a code to the capsule and verify the similarity" alt="" coords="148,136,323,177"/>
+<area shape="rect" id="node5" href="$classblc_1_1tools_1_1protocol_caps.html#a29311b6467d195d5d7a604957d1ff1ee" title="set the callback of the capsule" alt="" coords="148,201,323,243"/>
+<area shape="rect" id="node6" href="$classblc_1_1tools_1_1protocol_caps.html#a36e08d62305324a67498066714057aa3" title="activate the callback function" alt="" coords="148,267,323,308"/>
+</map>

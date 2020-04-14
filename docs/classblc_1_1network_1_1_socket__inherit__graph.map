@@ -1,0 +1,6 @@
+<map id="blc::network::Socket" name="blc::network::Socket">
+<area shape="rect" id="node1" title="wrap&#45;up the unix socket" alt="" coords="119,277,274,589"/>
+<area shape="rect" id="node4" href="$classblc_1_1network_1_1_client.html" title="a class that can be built with the information provided by the accept function or the data passed to ..." alt="" coords="123,637,271,729"/>
+<area shape="rect" id="node2" href="$classblc_1_1symbole_1_1non_copyable.html" title="set the copy constructor and copy operator to private to get a compilation error when copied in code...." alt="" coords="5,64,204,171"/>
+<area shape="rect" id="node3" href="$classblc_1_1stream.html" title="stream abstraction to construct stream in the blc fashion" alt="" coords="228,5,352,229"/>
+</map>
