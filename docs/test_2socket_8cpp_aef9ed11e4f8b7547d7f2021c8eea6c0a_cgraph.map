@@ -1,0 +1,19 @@
+<map id="TEST_CASE" name="TEST_CASE">
+<area shape="rect" id="node1" title=" " alt="" coords="5,456,100,483"/>
+<area shape="rect" id="node2" href="$namespaceblc_1_1network.html#a1208ba0a9578c5e266e2f70721660488" title=" " alt="" coords="148,5,335,32"/>
+<area shape="rect" id="node4" href="$classblc_1_1network_1_1_socket.html#a26d7b8bda60dfa3f9c632b0e9ba6f504" title="open the socket. need to be set with an address and a port." alt="" coords="164,57,319,98"/>
+<area shape="rect" id="node5" href="$classblc_1_1error_1_1exception.html#a0c7ce831895a4738f7c0fe39ee80d4a1" title="return the error message" alt="" coords="165,122,317,163"/>
+<area shape="rect" id="node6" href="$classblc_1_1network_1_1_socket.html#a4a3998a169c7dd257df6ccae4dee42b7" title="set the adress. needed when empty&#45;created" alt="" coords="164,187,319,229"/>
+<area shape="rect" id="node7" href="$classblc_1_1network_1_1_socket.html#a515ab41dc85af61abe43c36321923402" title="set the port. needed when empty&#45;created" alt="" coords="164,253,319,294"/>
+<area shape="rect" id="node8" href="$classblc_1_1network_1_1_socket.html#abd4cee9dbf5ad284f20e759291fdb970" title="set the type of the socket. default : AF_INET" alt="" coords="164,318,319,359"/>
+<area shape="rect" id="node9" href="$classblc_1_1network_1_1_socket.html#a0fc19fb86a62b6b9537a58aa445b5fc8" title="return the adress" alt="" coords="164,383,319,425"/>
+<area shape="rect" id="node10" href="$classblc_1_1network_1_1_socket.html#a049d2ef35c099d9cc251c861b014ab54" title="return the port" alt="" coords="164,449,319,490"/>
+<area shape="rect" id="node11" href="$classblc_1_1network_1_1_socket.html#a83063ee1a8244d8522e588e262dc86d4" title="return the type of the socket (blocking/non&#45;blocking)" alt="" coords="164,514,319,555"/>
+<area shape="rect" id="node12" href="$classblc_1_1network_1_1_socket.html#a190dade773573ec3bff60ed0b2ac6405" title="return the current type (domain) of the socket" alt="" coords="164,579,319,621"/>
+<area shape="rect" id="node13" href="$classblc_1_1network_1_1_socket.html#a9faa5030568ae14bcaf49991a4f81867" title="set the type of the socket. default : blocking" alt="" coords="164,645,319,686"/>
+<area shape="rect" id="node14" href="$classblc_1_1network_1_1_socket.html#a962525dba3e52d360a32dc0034fe1357" title="set the mode of the socket. default : SOCK_STREAM" alt="" coords="164,710,319,751"/>
+<area shape="rect" id="node15" href="$classblc_1_1network_1_1_socket.html#afac1042425b60049d943c0912c4f7ab1" title="return the current mode of the socket" alt="" coords="164,775,319,817"/>
+<area shape="rect" id="node16" href="$classblc_1_1network_1_1_socket.html#ad0dd558d26603736dba26268bc4c14ff" title="read a string from the socket" alt="" coords="164,841,319,882"/>
+<area shape="rect" id="node17" href="$classblc_1_1network_1_1_socket.html#a1a46297b8b98dc2df4d951acaeb46422" title="check if the socket is readable." alt="" coords="164,906,319,947"/>
+<area shape="rect" id="node3" href="$namespaceblc_1_1network.html#aa504034c7b5fa66bdd895b9a6fb89ce4" title=" " alt="" coords="383,5,557,32"/>
+</map>

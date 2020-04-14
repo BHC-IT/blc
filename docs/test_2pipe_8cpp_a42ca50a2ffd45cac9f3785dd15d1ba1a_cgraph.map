@@ -1,0 +1,14 @@
+<map id="TEST_CASE" name="TEST_CASE">
+<area shape="rect" id="node1" title=" " alt="" coords="5,259,100,285"/>
+<area shape="rect" id="node2" href="$classblc_1_1tools_1_1pipe.html#a58cf1dc2d3b88bb28db00b9f5aa228f0" title="return the master end of the pipe" alt="" coords="148,5,339,32"/>
+<area shape="rect" id="node3" href="$classblc_1_1tools_1_1pipe.html#afe7272d2b90db117be7d36e5ee42e151" title="return the slave end of the pipe" alt="" coords="152,56,335,83"/>
+<area shape="rect" id="node4" href="$classblc_1_1tools_1_1pipe.html#a7dcbe097df5ce8e79a1d824ab302b1c8" title="return the _state (master/slave)" alt="" coords="153,107,333,133"/>
+<area shape="rect" id="node5" href="$classblc_1_1tools_1_1pipe.html#acb85ffa91acd5203fea9e8004400f0d1" title="return the blocking state" alt="" coords="152,157,335,184"/>
+<area shape="rect" id="node6" href="$classblc_1_1tools_1_1pipe.html#a6e0e737292c92697d1783648e77ed98a" title="return true if the pipe is close, false otherwise" alt="" coords="153,208,333,235"/>
+<area shape="rect" id="node7" href="$classblc_1_1tools_1_1pipe.html#ac98a9e4bd8a667d7d6f4b03aa3237f13" title="return true if the pipe is readable, false otherwise" alt="" coords="152,259,335,285"/>
+<area shape="rect" id="node8" href="$classblc_1_1tools_1_1pipe.html#a6298e89e8030368c3c60cb97370ae2c5" title="read the pipe, C read&#45;like." alt="" coords="166,309,321,336"/>
+<area shape="rect" id="node9" href="$classblc_1_1tools_1_1pipe.html#a2022f120dfab7ae7f667245a9783dca7" title="set the blocking state" alt="" coords="153,360,334,387"/>
+<area shape="rect" id="node10" href="$classblc_1_1tools_1_1pipe.html#a55325fc9255e68e3be0c9dbb2f018a25" title="switch the commuter between slave/master" alt="" coords="160,411,327,453"/>
+<area shape="rect" id="node11" href="$classblc_1_1tools_1_1pipe.html#a136d6ea0f78b96a9a2b3237b03219f1d" title="close the pipe." alt="" coords="164,477,323,504"/>
+<area shape="rect" id="node12" href="$classblc_1_1tools_1_1pipe.html#a98f8779a2178acc937bf83564e172d9b" title="return true if the pipe is writable, false otherwise" alt="" coords="154,528,333,555"/>
+</map>

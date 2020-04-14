@@ -1,0 +1,5 @@
+<map id="blc::tools::promise::resolve" name="blc::tools::promise::resolve">
+<area shape="rect" id="node1" title="function to be called in the lambda given to the constructor of your promise. call the then lambda wi..." alt="" coords="5,5,148,47"/>
+<area shape="rect" id="node2" href="$namespace_catch_1_1_generators.html#a3c4989dd0dca44455f55484cedaa18da" title=" " alt="" coords="196,5,343,47"/>
+<area shape="rect" id="node3" href="$namespace_catch_1_1_generators_1_1pf.html#adb71cb1098062f6baaf86ec4feadae7d" title=" " alt="" coords="391,5,537,47"/>
+</map>

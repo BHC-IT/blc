@@ -1,0 +1,4 @@
+<map id="blc::network::client2way" name="blc::network::client2way">
+<area shape="rect" id="node1" title="use two socket to différentiate from lightweight communication and huge data&#45;transaction communicatio..." alt="" coords="14,160,195,399"/>
+<area shape="rect" id="node2" href="$classblc_1_1symbole_1_1non_copyable.html" title="set the copy constructor and copy operator to private to get a compilation error when copied in code...." alt="" coords="5,5,204,112"/>
+</map>
