@@ -69,7 +69,7 @@ blc::network::Server::Server(unsigned int maxClient, unsigned int port, bool blo
 	if (block) {
 		int ret;
 
-		ret = fcntl(this->_sock, F_SETFD, this->_mode | SOCK_NONBLOCK);
+		ret = fcntl(this->_sock, F_SETFL, this->_mode | SOCK_NONBLOCK);
 		if (ret == -1)
 			throw blc::error::exception(assertError(strerror(errno)));
 	}

@@ -101,12 +101,12 @@ void blc::network::Socket::setBlock(bool block) {
 
 	this->_block = block;
 	#ifdef __linux__
-		ret = fcntl(this->_socket, F_SETFD, this->_mode | (SOCK_NONBLOCK * (1 - this->_block)));
+		ret = fcntl(this->_socket, F_SETFL, this->_mode | (SOCK_NONBLOCK * (1 - this->_block)));
 	#elif __WIN32
 		u_long mode = !block;
 		ret = ioctlsocket(this->_socket, FIONBIO, &mode);
 	#else
-		ret = fcntl(this->_socket, F_SETFD, this->_mode | (SOCK_NONBLOCK * (1 - this->_block)));
+		ret = fcntl(this->_socket, F_SETFL, this->_mode | (SOCK_NONBLOCK * (1 - this->_block)));
 	#endif
 	if (ret == -1)
 		throw blc::error::exception(strerror(errno));
