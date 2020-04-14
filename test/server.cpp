@@ -45,6 +45,8 @@ TEST_CASE( "server tested", "[server]" ) {
 	serv.wait(1000);
 	serv.stop();
 
+	std::this_thread::sleep_for(std::chrono::duration<double, std::milli>(100));
+
 	serv.resume();
 
 	std::this_thread::sleep_for(std::chrono::duration<double, std::milli>(10));
