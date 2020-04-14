@@ -106,23 +106,23 @@ TEST_CASE( "twoWay tested", "[twoWay]" ) {
 	REQUIRE(client.getPortData() == rcvd);
 
 	REQUIRE(client.getBlock() == true);
-	REQUIRE(client.getMode() == SOCK_STREAM);
+	REQUIRE(client.getMode() == TCP);
 	REQUIRE(client.getType() == AF_INET);
 
 	REQUIRE(client.getBlockData() == true);
-	REQUIRE(client.getModeData() == SOCK_STREAM);
+	REQUIRE(client.getModeData() == TCP);
 	REQUIRE(client.getTypeData() == AF_INET);
 
 	client.setAddress("localhost");
 	client.setPort(port);
 	client.setBlock(true);
-	client.setMode(SOCK_STREAM);
+	client.setMode(TCP);
 	client.setType(AF_INET);
 
 	client.setAddressData("localhost");
 	client.setPortData(rcvd);
 	client.setBlockData(true);
-	client.setModeData(SOCK_STREAM);
+	client.setModeData(TCP);
 	client.setTypeData(AF_INET);
 
 	REQUIRE(serv.getMap().size() == serv.getChilds().size());
