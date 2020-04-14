@@ -11,6 +11,9 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 #pragma once
 
+#include <string>
+#include <functional>
+
 #ifdef __WIN32
 	#include <winsock2.h>
 #elif __WIN64
@@ -62,8 +65,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 	#define INADDR_NONE  -1
 #endif
 
-#include <string>
-#include <functional>
 #include "blc/nonCopyable.hpp"
 #include "blc/stream.hpp"
 
