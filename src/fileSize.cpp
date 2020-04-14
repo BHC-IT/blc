@@ -21,7 +21,7 @@ int64_t blc::tools::fileSize(std::ifstream &file) {
 	return (len);
 }
 
-int64_t fileSize(std::ifstream &file, std::streampos pos, std::ios_base::seekdir way) {
+int64_t blc::tools::fileSize(std::ifstream &file, std::streampos pos, std::ios_base::seekdir way) {
 	if (file.is_open() == false)
 		return (-1);
 	file.seekg(0, file.end);
@@ -39,7 +39,7 @@ int64_t blc::tools::fileSize(std::istream &file) {
 	return (len);
 }
 
-int64_t fileSize(std::istream &file, std::streampos pos, std::ios_base::seekdir way) {
+int64_t blc::tools::fileSize(std::istream &file, std::streampos pos, std::ios_base::seekdir way) {
 	file.seekg(0, file.end);
 	int64_t len = file.tellg();
 	file.seekg(pos, way);

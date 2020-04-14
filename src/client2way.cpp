@@ -159,11 +159,11 @@ bool blc::network::client2way::readableData() const {
 	return (this->_data.readable());
 }
 
-bool blc::network::client2way::writeableComm() const {
+bool blc::network::client2way::writableComm() const {
 	return (this->_comm.writable());
 }
 
-bool blc::network::client2way::writeableData() const {
+bool blc::network::client2way::writableData() const {
 	return (this->_data.writable());
 }
 

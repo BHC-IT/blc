@@ -27,25 +27,27 @@ namespace blc {
 			Float	&operator=(const Float &other);
 			Float	&operator=(Float &&other);
 
-			Float	&operator+(double i);
-			Float	&operator+(const Float &i);
-			Float	&operator-(double i);
-			Float	&operator-(const Float &i);
-			Float	&operator*(double i);
-			Float	&operator*(const Float &i);
-			Float	&operator/(double i);
-			Float	&operator/(const Float &i);
+			Float	operator+(double i) const;
+			Float	operator+(const Float &i) const;
+			Float	operator-(double i) const;
+			Float	operator-(const Float &i) const;
+			Float	operator*(double i) const;
+			Float	operator*(const Float &i) const;
+			Float	operator/(double i) const;
+			Float	operator/(const Float &i) const;
 
-			bool	operator==(double i);
-			bool	operator==(const Float &i);
-			bool	operator>(double i);
-			bool	operator>(const Float &i);
-			bool	operator<(double i);
-			bool	operator<(const Float &i);
-			bool	operator>=(double i);
-			bool	operator>=(const Float &i);
-			bool	operator<=(double i);
-			bool	operator<=(const Float &i);
+			bool	operator==(double i) const;
+			bool	operator==(const Float &i) const;
+			bool	operator!=(double i) const;
+			bool	operator!=(const Float &i) const;
+			bool	operator<(double i) const;
+			bool	operator<(const Float &i) const;
+			bool	operator>(double i) const;
+			bool	operator>(const Float &i) const;
+			bool	operator<=(double i) const;
+			bool	operator<=(const Float &i) const;
+			bool	operator>=(double i) const;
+			bool	operator>=(const Float &i) const;
 
 			double	operator()() const;
 

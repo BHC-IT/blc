@@ -38,6 +38,7 @@ TEST_CASE( "Pipe tested", "[pipe]" ) {
 	REQUIRE(slavePipe3.read() == "" );
 
 
+	test.close();
 	test = slavePipe3;
 	masterPipe << "test\n";
 	REQUIRE(test.read() == "test");

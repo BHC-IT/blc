@@ -22,6 +22,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 #include "blc/protocolCaps.hpp"
 #include "blc/protocolFactory.hpp"
 #include "blc/pipe.hpp"
+#include "blc/pipeCluster.hpp"
 #include "blc/server2way.hpp"
 #include "blc/stream.hpp"
 #include "blc/pair.hpp"
@@ -37,7 +38,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 #include "blc/constraint.hpp"
 #include "blc/concept.hpp"
 #include "blc/promise.hpp"
-#include "blc/VFiles.hpp"
+#include "blc/VFile.hpp"
 
 #include "concept/operable.hpp"
 

@@ -47,18 +47,39 @@ blc::network::Server::Server(unsigned int maxClient, unsigned int port, bool blo
 														_block(block),
 														_mode(mode),
 														_type(type) {
-	if (block) {
+	#ifdef __linux__
+		if (block) {
+			if ((this->_sock = ::socket(this->_type, this->_mode, 0)) == -1)
+				throw blc::error::exception(assertError(strerror(errno)));
+		} else {
+			if ((this->_sock = ::socket(this->_type, this->_mode | SOCK_NONBLOCK, 0)) == -1)
+				throw blc::error::exception(assertError(strerror(errno)));
+		}
+	#elif __WIN32
+		if (block) {
+			if ((this->_sock = ::socket(this->_type, this->_mode, 0)) == -1)
+				throw blc::error::exception(assertError(strerror(errno)));
+		} else {
+			if ((this->_sock = ::socket(this->_type, this->_mode | SOCK_NONBLOCK, 0)) == -1)
+				throw blc::error::exception(assertError(strerror(errno)));
+		}
+	#else
 		if ((this->_sock = ::socket(this->_type, this->_mode, 0)) == -1)
-			throw blc::error::exception(strerror(errno));
-	} else {
-		if ((this->_sock = ::socket(this->_type, this->_mode | SOCK_NONBLOCK, 0)) == -1)
-			throw blc::error::exception(strerror(errno));
-	}
+			throw blc::error::exception(assertError(strerror(errno)));
+		if (!block) {
+			int ret;
+
+			ret = fcntl(this->_sock, F_SETFL, this->_mode | SOCK_NONBLOCK);
+			if (ret == -1)
+				throw blc::error::exception(assertError(strerror(errno)));
+		}
+	#endif
+
 	this->_addr.sin_family = this->_type;
 	this->_addr.sin_port = htons(port);
 	this->_addr.sin_addr.s_addr = htonl(INADDR_ANY);
 	if (::bind(this->_sock, (const struct sockaddr *)&this->_addr, sizeof(struct sockaddr_in)) == -1)
-		throw blc::error::exception(strerror(errno));
+		throw blc::error::exception(assertError(strerror(errno)));
 	this->listen();
 }
 

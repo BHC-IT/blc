@@ -67,12 +67,15 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 	#define SOCKET int
 #endif
 
+#define UDP SOCK_DGRAM
+#define TCP SOCK_STREAM
+
 namespace blc {
 	namespace network {
 		/// server object. the run function must be implemented in the child.
 		class Server : virtual public symbole::nonCopyable {
 		public:
-			Server(unsigned int maxClient, unsigned int port, bool block = true, int mode = SOCK_STREAM, int type = AF_INET);
+			Server(unsigned int maxClient, unsigned int port, bool block = true, int mode = TCP, int type = AF_INET);
 			///< set server information needed to run
 
 			~Server();

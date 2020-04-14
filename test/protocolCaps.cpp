@@ -36,6 +36,7 @@ TEST_CASE( "Caps tested", "[caps]" ) {
 	};
 
 	REQUIRE(caps.checkAndActive(201, 5) == 3);
+	REQUIRE(caps.checkAndActive(200, 5) == -1);
 
 	blc::tools::protocolCaps<int, int> secCaps;
 

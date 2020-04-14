@@ -4,9 +4,9 @@
 
 #include "catch.hpp"
 
-class testServ : public blc::network::Server, public blc::tools::actor<testServ> {
+class testServActor : public blc::network::Server, public blc::tools::actor<testServActor> {
 public:
-	testServ(int port) : Server(2, port, true) {
+	testServActor(int port) : Server(2, port, true) {
 		this->start();
 	}
 
@@ -25,7 +25,7 @@ public:
 				cl << "ok\n";  // 3
 
 
-				usleep(5000);
+				std::this_thread::sleep_for(std::chrono::duration<double, std::milli>(10));
 				std::string tmp;
 
 				cl >> tmp;
@@ -33,12 +33,12 @@ public:
 
 				std::cout << cl << std::endl; // 5
 
-				usleep(50);
+				std::this_thread::sleep_for(std::chrono::duration<double, std::milli>(10));
 				cl << "ok\n"; // 6
 
 				cl.read(); //  7, after close
 
-				usleep(5000);
+				std::this_thread::sleep_for(std::chrono::duration<double, std::milli>(10));
 				REQUIRE(cl.readable() == false);
 				this->kill();
 			}
@@ -72,9 +72,9 @@ TEST_CASE( "socket tested", "[socket]" ) {
 	REQUIRE(testable.getType() ==  0);
 
 
-	testServ serv(i);
+	testServActor serv(i);
 
-	usleep(5000);
+	std::this_thread::sleep_for(std::chrono::duration<double, std::milli>(10));
 	blc::network::Socket sock("127.0.0.1", i);
 	sock.open();
 
@@ -92,7 +92,7 @@ TEST_CASE( "socket tested", "[socket]" ) {
 	REQUIRE(sock.readable() == false);
 	sock << "ok\n"; // 2
 
-	usleep(5000);
+	std::this_thread::sleep_for(std::chrono::duration<double, std::milli>(10));
 	REQUIRE(sock.readable() == true);
 	REQUIRE(sock.writable() == true);
 	REQUIRE(sock.isOpen() == true);
@@ -111,9 +111,20 @@ TEST_CASE( "socket tested", "[socket]" ) {
 	sock.close();
 	REQUIRE(sock.isOpen() == false);
 	REQUIRE(sock.isClosed() == true);
-	sock << "test\n"; // 7, bad
+	REQUIRE(sock.writable() == false);
+	try {
+		sock << "test\n"; // 7, bad
+	} catch (blc::error::exception &e) {
+		REQUIRE(e.what() == std::string("Error : not opened"));
+	}
 	try {
 		sock.read();
+	} catch (blc::error::exception &e) {
+		REQUIRE(e.what() == std::string("Error : not opened"));
+	}
+
+	try {
+		sock.read(5);
 	} catch (blc::error::exception &e) {
 		REQUIRE(e.what() == std::string("Error : not opened"));
 	}
@@ -124,5 +135,15 @@ TEST_CASE( "socket tested", "[socket]" ) {
 	} catch (blc::error::exception &e) {
 	}
 
-	usleep(5000);
+	blc::network::Socket google("google.com", 80);
+	try {
+		failer.open();
+	} catch (blc::error::exception &e) {
+	}
+
+	blc::network::Socket sock2("127.0.0.1", i);
+	sock2.open();
+	sock2.open();
+
+	std::this_thread::sleep_for(std::chrono::duration<double, std::milli>(10));
 }

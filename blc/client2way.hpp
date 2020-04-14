@@ -23,7 +23,7 @@ namespace blc {
 			client2way();
 			///< construct an none set object
 
-			client2way(std::string addresse, int port, bool block = true, int mode = SOCK_STREAM, int type = AF_INET);
+			client2way(std::string addresse, int port, bool block = true, int mode = TCP, int type = AF_INET);
 			///< construct a set object
 
 			~client2way();
@@ -125,10 +125,10 @@ namespace blc {
 			bool		readableData() const;
 			///< check if the data socket is readable.
 
-			bool		writeableComm() const;
+			bool		writableComm() const;
 			///< check if the communication socket is writable.
 
-			bool		writeableData() const;
+			bool		writableData() const;
 			///< check if the data socket is writable.
 
 			bool		waitReadComm(int usec) const;
