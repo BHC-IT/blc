@@ -18,12 +18,10 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 #include "blc/server.hpp"
 #include "blc/client2way.hpp"
 #include "blc/client.hpp"
-#include "blc/singleServer.hpp"
 #include "blc/protocolCaps.hpp"
 #include "blc/protocolFactory.hpp"
 #include "blc/pipe.hpp"
 #include "blc/pipeCluster.hpp"
-#include "blc/server2way.hpp"
 #include "blc/stream.hpp"
 #include "blc/pair.hpp"
 #include "blc/blcmain.hpp"
@@ -39,6 +37,9 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 #include "blc/concept.hpp"
 #include "blc/promise.hpp"
 #include "blc/VFile.hpp"
+#include "blc/SSLSocket.hpp"
+#include "blc/env.hpp"
+#include "blc/spawn.hpp"
 
 #include "concept/operable.hpp"
 
@@ -60,4 +61,7 @@ namespace blc {
 
 	/// contain all the tools to build and use constraint and concept
 	namespace concept {}
+
+	/// contain all the tools to work on process
+	namespace Process {}
 }  // namespace blc

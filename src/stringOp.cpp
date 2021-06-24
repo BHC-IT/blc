@@ -36,3 +36,13 @@ std::vector<std::string> blc::tools::cut(std::string s, char delim) {
 std::vector<std::string> blc::tools::cut(const std::string &s, std::string delim, bool cut_on) {
 	return (blc::tools::cut(s, delim[0]));
 }
+
+std::string blc::tools::merge(const std::vector<std::string> &v, char delim) {
+	std::string ret;
+
+	for (auto s : v)
+		ret += s + std::string(1, delim);
+
+
+	return ret.substr(0, ret.size() - 1);
+}

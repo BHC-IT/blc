@@ -20,4 +20,7 @@ TEST_CASE( "stringOp tested", "[stringOp]" ) {
 
 	res = blc::tools::cut(tmp, "3");
 	REQUIRE(res[0] == "12");
+
+	std::string merge = blc::tools::merge(std::vector<std::string>({"test", "truc", "ok"}), ' ');
+	REQUIRE(merge == "test truc ok");
 }

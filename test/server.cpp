@@ -10,7 +10,7 @@ public:
 	}
 
 	void	run(void *userData) {
-		struct sockaddr	client;
+		struct sockaddr_in	client;
 		while (this->_kill == false){
 			std::this_thread::sleep_for(std::chrono::duration<double, std::milli>(1));
 			if (this->_stop){
@@ -39,7 +39,7 @@ TEST_CASE( "server tested", "[server]" ) {
 
 	REQUIRE(serv.getPort() == i);
 
-	serv.handle([](int sock, struct sockaddr ad, int i){
+	serv.handle([](int sock, struct sockaddr_in ad, int i){
 		REQUIRE(sock == 0);
 	});
 	serv.wait(1000);

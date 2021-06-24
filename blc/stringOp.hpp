@@ -20,6 +20,7 @@ namespace blc {
 		bool 				isNumber(const std::string& s);
 		std::vector<std::string>	cut(std::string s, char delim = ' ');
 		std::vector<std::string>	cut(const std::string &s, std::string delim, bool cut_on = true);
+		std::string			merge(const std::vector<std::string> &v, char delim = ' ');
 
 	}  // namespace tools
 

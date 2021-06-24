@@ -28,8 +28,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 #endif
 #include "blc/client.hpp"
 
-blc::network::Client::Client(int socket, struct sockaddr addr) : Socket() {
-	 struct sockaddr_in data;
+blc::network::Client::Client(int socket, struct sockaddr_in addr) : Socket() {
+	struct sockaddr_in data;
 
 	data = *((struct sockaddr_in*)(&addr));
 	this->_socket = socket;

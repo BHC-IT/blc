@@ -111,7 +111,7 @@ void blc::network::Server::listen() {
 	::listen(this->_sock, this->_maxClient);
 }
 
-void blc::network::Server::handle(std::function<void(int, struct sockaddr, int)> handle) {
+void blc::network::Server::handle(std::function<void(int, struct sockaddr_in, int)> handle) {
 	this->_mutex.lock();
 	this->_handle = handle;
 	this->_mutex.unlock();
@@ -141,10 +141,10 @@ void blc::network::Server::kill() {
 	this->_mutex.unlock();
 }
 
-int blc::network::Server::accept(struct sockaddr *client) {
-	socklen_t size = sizeof(struct sockaddr);
+int blc::network::Server::accept(struct sockaddr_in *client) {
+	uint size = sizeof(*client);
 
-	return (::accept(this->getSock(), client, reinterpret_cast<socklen_t *>(&size)));
+	return (::accept(this->getSock(), (struct sockaddr *)client, &size));
 }
 
 void blc::network::Server::close() {
