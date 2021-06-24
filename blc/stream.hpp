@@ -26,11 +26,13 @@ namespace blc {
 		virtual bool		readable() const = 0;
 		virtual bool		writable() const = 0;
 		virtual bool		isClosed() const = 0;
+
 		stream			&operator<<(const std::string &str);
 		stream			&operator<<(const char str[]);
 		stream			&operator<<(int nb);
 		stream			&operator<<(double nb);
 		stream			&operator<<(char c);
+
 		stream			&operator>>(std::string &str);
 		stream			&operator>>(char str[]);
 		stream			&operator>>(char c);

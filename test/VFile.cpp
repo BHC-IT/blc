@@ -95,4 +95,8 @@ TEST_CASE( "VFile tested", "[VFile]" ) {
 	}
 	file4.seekg(-2, blc::tools::seekDir::end);
 	REQUIRE(file4.read() == "st");
+
+	blc::tools::VFile file5("../test/VFile.test");
+	file5.setCache("test line 1\ntest line 2\ntest line 3\ntest line 4");
+	file5.unload();
 }

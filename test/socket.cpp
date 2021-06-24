@@ -12,7 +12,7 @@ public:
 
 	void	run(void *userData) {
 		while (this->_kill == false){
-			struct sockaddr	client;
+			struct sockaddr_in	client;
 			int sock = this->accept(&client);
 			if (sock > 0){
 
@@ -31,7 +31,6 @@ public:
 				cl >> tmp;
 				REQUIRE(tmp == "test"); // 4
 
-				std::cout << cl << std::endl; // 5
 
 				std::this_thread::sleep_for(std::chrono::duration<double, std::milli>(10));
 				cl << "ok\n"; // 6

@@ -100,7 +100,7 @@ namespace blc {
 			void		listen();
 			///< start to listen.
 
-			void		handle(std::function<void(int, struct sockaddr, int)> handle);
+			void		handle(std::function<void(int, struct sockaddr_in, int)> handle);
 			///< spécifie the function to be called when a client open communication.
 			///< the parameters are : the client socket, the client socket, and a pointer too a user data (may be a nullptr)
 
@@ -120,7 +120,7 @@ namespace blc {
 			void		kill();
 			///< kill the server.
 
-			int		accept(struct sockaddr *client);
+			int		accept(struct sockaddr_in *client);
 			void		close();
 
 		protected:
@@ -145,7 +145,7 @@ namespace blc {
 			std::mutex						_mutex;
 			///< use to dialogate thread-safely with the server
 
-			std::function<void(int, struct sockaddr, int)>		_handle;
+			std::function<void(int, struct sockaddr_in, int)>		_handle;
 			///< handle function beeing called by the server when a client connect.
 
 			SOCKET							_sock;

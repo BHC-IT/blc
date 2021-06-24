@@ -1,6 +1,10 @@
-on: ["push", "pull_request"]
-
 name: GCovr
+
+on:
+  push:
+    branches: [ test ]
+  pull_request:
+    branches: [ master, dev, test ]
 
 jobs:
 

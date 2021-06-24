@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.1)
 project(blc)
 
 set(blc_MAJOR_VERSION 1)
-set(blc_MINOR_VERSION 1)
+set(blc_MINOR_VERSION 2)
 set(blc_PATCH_VERSION 0)
 set(blc_VERSION
 	${blc_MAJOR_VERSION}.${blc_MINOR_VERSION}.${blc_PATCH_VERSION}
@@ -25,9 +25,8 @@ set(SRCS
 	src/regex.cpp
 	src/serializable.cpp
 	src/server.cpp
-	src/server2way.cpp
-	src/singleServer.cpp
 	src/socket.cpp
+	src/SSLSocket.cpp
 	src/stream.cpp
 	src/stringOp.cpp
 	src/VFile.cpp
@@ -68,9 +67,9 @@ set(HEADERS
 	blc/regex.hpp
 	blc/serializable.hpp
 	blc/server.hpp
-	blc/server2way.hpp
-	blc/singleServer.hpp
 	blc/socket.hpp
+	blc/spawn.hpp
+	blc/SSLSocket.hpp
 	blc/stream.hpp
 	blc/stringOp.hpp
 	blc/vecteur2.hpp
@@ -83,24 +82,24 @@ set(CONCEPTS
 )
 
 set(TEST
-	test/main.cpp
-	test/pipe.cpp
-	test/protocolCaps.cpp
-	test/protocolFactory.cpp
-	test/stringOp.cpp
 	test/bindTest.cpp
 	test/cinReadable.cpp
-	test/socket.cpp
-	test/stream.cpp
+	test/env.cpp
 	test/errorHandle.cpp
-	test/server.cpp
 	test/fileSize.cpp
 	test/float.cpp
-	test/serializable.cpp
+	test/main.cpp
+	test/pipe.cpp
 	test/pipeCluster.cpp
+	test/protocolCaps.cpp
+	test/protocolFactory.cpp
 	test/regex.cpp
-	test/twoWay.cpp
-	test/singleServer.cpp
+	test/serializable.cpp
+	test/server.cpp
+	test/socket.cpp
+	test/spawn.cpp
+	test/stream.cpp
+	test/stringOp.cpp
 	test/VFile.cpp
 )
 
@@ -182,6 +181,7 @@ install(FILES blc/blcmain.hpp DESTINATION ${INSTALL_INCLUDE_DIR}/blc)
 
 set(THREADS_PREFER_PTHREAD_FLAG ON)
 find_package(Threads REQUIRED)
+find_package(OpenSSL REQUIRED)
 
 if(WIN32)
 	target_link_libraries(objlib wsock32 ws2_32)
@@ -193,9 +193,18 @@ endif()
 target_link_libraries(blc Threads::Threads)
 target_link_libraries(blc.2 Threads::Threads)
 
+target_link_libraries(blc crypto)
+target_link_libraries(blc.2 crypto)
+
+target_link_libraries(blc ssl)
+target_link_libraries(blc.2 ssl)
+
+include_directories(${OPENSSL_INCLUDE_DIR})
+
 find_package(Doxygen QUIET
 	#OPTIONAL_COMPONENTS mscgen dia dot
 	)
+
 
 if(Doxygen_FOUND)
 	set(doxyfile_in ${CMAKE_CURRENT_SOURCE_DIR}/Doxyfile.in)
@@ -221,14 +230,16 @@ set(CMAKE_BUILD_TYPE Debug)
 
 if(test)
 	SET(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} ${GCC_COVERAGE_COMPILE_FLAGS} -fprofile-arcs -ftest-coverage -g -O0")
-	add_executable(test ${TEST} ${SRCS} ${CONCEPTS} ${HEADERS})
+	add_executable(test ${TEST} $<TARGET_OBJECTS:objlib>)
 	target_compile_features(test PUBLIC cxx_nullptr)
+
 	target_link_libraries(test Threads::Threads)
+	target_link_libraries(test crypto)
+	target_link_libraries(test ssl)
+
 	target_include_directories(test PRIVATE .)
 	set_property(TARGET test PROPERTY CXX_STANDARD 17)
 	if(WIN32)
 		target_link_libraries(test wsock32 ws2_32)
 	endif()
 endif()
-
-# lcov --no-external -c -d CMakeFiles -o cov.info && genhtml cov.info -o out
