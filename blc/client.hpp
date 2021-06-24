@@ -25,7 +25,7 @@ namespace blc {
 		/// a class that can be built with the information provided by the accept function or the data passed to the handle function.
 		class Client : public Socket {
 		public:
-			Client(int socket, struct sockaddr);
+			Client(int socket, struct sockaddr_in);
 			///< construct the client object from an already open socket.
 			/**< be aware not to use the same socket in multiple client as this may disrupt the logic of the application */
 

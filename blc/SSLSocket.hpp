@@ -14,6 +14,9 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 #include <string>
 #include <functional>
 
+#include <openssl/ssl.h>
+#include <openssl/err.h>
+
 #ifdef __WIN32
 	#include <winsock2.h>
 #elif __WIN64
@@ -66,6 +69,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 #endif
 
 #include "blc/nonCopyable.hpp"
+#include "blc/socket.hpp"
 #include "blc/stream.hpp"
 
 #ifndef SOCKET
@@ -78,21 +82,23 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 namespace blc {
 	namespace network {
 		/// wrap-up the unix socket
-		class Socket : private symbole::nonCopyable, public stream {
+		class SSLSocket : public blc::network::Socket {
 		public:
-			Socket();
+			SSLSocket();
 			///< construct an empty socket.
 			/**< construct without address nor port socket empty. can't be opened unless the socket adress and port are fills.*/
-			Socket(const Socket &other) = default;
-			Socket(Socket &&other) = default;
+			SSLSocket(std::string address, int port, bool block = true, int mode = SOCK_STREAM, int type = AF_INET);
 
-			Socket		&operator=(Socket &&other) = default;
-			Socket 		&operator=(const Socket &other) = default;
+			SSLSocket(const SSLSocket &other) = default;
+			SSLSocket(SSLSocket &&other) = default;
 
-			Socket(std::string address, int port, bool block = true, int mode = TCP, int type = AF_INET);
+			SSLSocket		&operator=(SSLSocket &&other) = default;
+			SSLSocket 		&operator=(const SSLSocket &other) = default;
+
+			SSLSocket(int socket, struct sockaddr_in addr);
 			///< construct a set object
 
-			~Socket();
+			~SSLSocket();
 			std::string	getAddress() const;
 			///< return the adress
 
@@ -156,11 +162,16 @@ namespace blc {
 			bool 		waitWrite(unsigned int usec) const;
 			///< wait usec µsec for the socket to be writable.
 
-			const Socket	&operator<<(const std::string &str) const;
+			const SSLSocket	&operator<<(const std::string &str) const;
 			///< call write with the str string.
 
-			const Socket	&operator>>(std::string &str) const;
+			const SSLSocket	&operator>>(std::string &str) const;
 			///< call read and write the response in the string str.
+
+
+			static void	setUpSSl(std::string pubKey, std::string privKey);
+
+			static void	cleanSSl();
 
 		protected:
 			SOCKET		_socket;
@@ -170,10 +181,16 @@ namespace blc {
 			int		_mode;
 			int		_type;
 			bool		_opened;
+		        SSL		*_ssl;
+
+		private:
+			static SSL_CTX 	*_ctx;
+			static SSL_CTX 	*_ctx_client;
 		};
 
 	}  // namespace network
 
 }  // namespace blc
 
-std::ostream &operator<<(std::ostream &ostream, blc::network::Socket &socket);
+std::ostream &operator<<(std::ostream &ostream, blc::network::SSLSocket &socket);
+
