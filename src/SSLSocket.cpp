@@ -100,7 +100,6 @@ blc::network::SSLSocket::SSLSocket(std::string address, int port, bool block, in
 													_opened(false) {}
 
 blc::network::SSLSocket::SSLSocket(int socket, struct sockaddr_in addr) : _block(false) {
-
 	this->_socket = socket;
 	this->_opened = true;
 	this->_ssl = SSL_new(this->_ctx);
@@ -116,7 +115,7 @@ blc::network::SSLSocket::SSLSocket(int socket, struct sockaddr_in addr) : _block
 	this->_port = ntohs(addr.sin_port);
 
 	int ret = SSL_accept(this->_ssl);
-	if (ret <= 0){
+	if (ret <= 0) {
 		log_ssl();
 		throw blc::error::exception("handshake failed");
 	}

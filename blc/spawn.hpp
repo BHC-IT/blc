@@ -1,3 +1,14 @@
+/*
+Copyright 2020 BHC-IT
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+*/
+
 #pragma once
 
 #include <sys/types.h>
@@ -17,14 +28,16 @@ namespace blc {
 		class spawn : public blc::stream {
 		public:
 			spawn() = delete;
-			spawn(std::string command) : _command(command), _opened(true) {
+			explicit spawn(std::string command) : _command(command), _opened(true) {
 				this->run();
-			};
+			}
+
 			spawn(std::string command, std::vector<std::string> args) : _command(command), _opened(true) {
 				this->_command += std::string(" ") + blc::tools::merge(args);
 				this->run();
-			};
-			~spawn() { if (this->_alive) this->kill(); };
+			}
+
+			~spawn() { if (this->_alive) this->kill(); }
 
 			spawn(const spawn &other) = delete;
 			spawn(spawn &&other) = default;
@@ -153,14 +166,13 @@ namespace blc {
 			if (!this->isClosed())
 				this->close();
 
-			if (::kill(this->_c_pid, SIGKILL) == -1){
+			if (::kill(this->_c_pid, SIGKILL) == -1) {
 				if (errno != ESRCH) {
 					throw blc::error::exception("not killed");
 				}
 			}
 			this->_alive = false;
 			this->_c_pid = 0;
-
 		}
 
 		inline bool spawn::readable() const {
@@ -190,5 +202,5 @@ namespace blc {
 		}
 
 
-	} // Process
-} // blc
+	}  // namespace Process
+}  // namespace blc

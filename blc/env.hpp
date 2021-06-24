@@ -1,3 +1,14 @@
+/*
+Copyright 2020 BHC-IT
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+*/
+
 #pragma once
 
 #include <map>
@@ -12,7 +23,6 @@ namespace blc {
 
 		template <class ...Types>
 		class env : blc::tools::serializable {
-
 		public:
 			env() = default;
 			~env() = default;
@@ -24,8 +34,8 @@ namespace blc {
 			env						&operator=(env &&other) = default;
 
 
-			env(std::map<std::string, std::variant<Types...>> &src_map);
-			env(const std::vector<std::string> &c_env);
+			explicit env(const std::map<std::string, std::variant<Types...>> &src_map);
+			explicit env(const std::vector<std::string> &c_env);
 
 			static const env				&getFromRegister();
 			static env					&getFromRegister_unsafe();
@@ -64,7 +74,6 @@ namespace blc {
 			std::string serialize() const;
 			void unserialize(const std::string &str);
 
-		protected:
 		private:
 			std::map<std::string, std::variant<Types...>>	 	_values;
 			static std::map<std::string, std::variant<Types...>> 	_values_register;
@@ -74,7 +83,7 @@ namespace blc {
 		inline std::map<std::string, std::variant<Types...>> 	env<Types...>::_values_register{};
 
 		template <class ...Types>
-		inline env<Types...>::env(std::map<std::string, std::variant<Types...>> &src_map) : _values(src_map) {}
+		inline env<Types...>::env(const std::map<std::string, std::variant<Types...>> &src_map) : _values(src_map) {}
 
 		template <class ...Types>
 		inline env<Types...>::env(const std::vector<std::string> &c_env) {
@@ -140,7 +149,6 @@ namespace blc {
 		template <class ...Types>
 		inline bool env<Types...>::emplace(const std::string &k, const std::variant<Types...> &value) {
 			return this->_values.emplace(k, value).second;
-
 		}
 
 		template <class ...Types>
@@ -202,6 +210,5 @@ namespace blc {
 		template <class ...Types>
 		inline void env<Types...>::unserialize(const std::string &str) {
 		}
-	}
-}
-
+	}  // namespace Process
+}  // namespace blc
