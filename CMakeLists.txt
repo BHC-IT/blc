@@ -53,6 +53,7 @@ set(HEADERS
 	blc/client2way.hpp
 	blc/concept.hpp
 	blc/constraint.hpp
+	blc/env.hpp
 	blc/errorHandle.hpp
 	blc/fileSize.hpp
 	blc/float.hpp
@@ -226,9 +227,10 @@ endif()
 add_definitions(${GCC_COVERAGE_COMPILE_FLAGS})
 
 SET(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} ${GCC_COVERAGE_COMPILE_FLAGS}")
-set(CMAKE_BUILD_TYPE Debug)
+set(CMAKE_BUILD_TYPE Release)
 
 if(test)
+	set(CMAKE_BUILD_TYPE Debug)
 	SET(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} ${GCC_COVERAGE_COMPILE_FLAGS} -fprofile-arcs -ftest-coverage -g -O0")
 	add_executable(test ${TEST} $<TARGET_OBJECTS:objlib>)
 	target_compile_features(test PUBLIC cxx_nullptr)
