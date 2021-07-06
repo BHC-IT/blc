@@ -6,15 +6,16 @@
 
 
 TEST_CASE( "spawn tested", "[spawn]" ) {
-	blc::Process::spawn ls("/bin/ls");
+	blc::Process::spawn ls("ls");
+	std::string out;
 
-	std::cout << "ls : " << ls.read() << std::endl;
+	while((out = ls.read()) != "") std::cout << "ls : " << out << std::endl;
 
-	blc::Process::spawn ll("/bin/ls -l");
+	blc::Process::spawn ll("ls -l");
 
-	std::cout << "ll : " << ll.read() << std::endl;
+	while((out = ll.read()) != "") std::cout << "ll : " << out << std::endl;
 
-	blc::Process::spawn la("/bin/ls", {"-l", "-a"});
+	blc::Process::spawn la("ls", {"-l", "-a"});
 
-	std::cout << "la : " << la.read() << std::endl;
+	while((out = la.read()) != "") std::cout << "la : " << out << std::endl;
 }

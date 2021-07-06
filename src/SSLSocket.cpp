@@ -257,6 +257,8 @@ std::string blc::network::SSLSocket::read() const {
 	if (this->_opened == false)
 		throw blc::error::exception("not opened");
 	while ((ret = SSL_read(this->_ssl, &tmp, 1)) > 0) {
+		if (ret == -1)
+			throw new blc::error::exception("read error");
 		if (tmp == '\n' || tmp == '\0')
 			break;
 		str += tmp;
@@ -272,6 +274,8 @@ std::string blc::network::SSLSocket::read(int n) const {
 	if (this->_opened == false)
 		throw blc::error::exception("not opened");
 	int size = SSL_read(this->_ssl, tmp, n);
+	if (size == -1)
+		throw new blc::error::exception("read error");
 	return (std::string(tmp, tmp + size));
 }
 

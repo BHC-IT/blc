@@ -53,6 +53,7 @@ set(HEADERS
 	blc/client2way.hpp
 	blc/concept.hpp
 	blc/constraint.hpp
+	blc/env.hpp
 	blc/errorHandle.hpp
 	blc/fileSize.hpp
 	blc/float.hpp
@@ -174,7 +175,7 @@ install(TARGETS blc blc.2 EXPORT blcTargets
 	ARCHIVE DESTINATION ${INSTALL_LIB_DIR}
 	LIBRARY DESTINATION ${INSTALL_LIB_DIR})
 install(FILES ${HEADERS} ${TEMPLATE} DESTINATION ${INSTALL_INCLUDE_DIR}/blc)
-install(FILES ${CONCEPTS} DESTINATION ${INSTALL_INCLUDE_DIR}/concept)
+install(FILES ${CONCEPTS} DESTINATION ${INSTALL_INCLUDE_DIR}/blc/concept)
 install(FILES blc/blcmain.hpp DESTINATION ${INSTALL_INCLUDE_DIR}/blc)
 
 
@@ -226,9 +227,10 @@ endif()
 add_definitions(${GCC_COVERAGE_COMPILE_FLAGS})
 
 SET(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} ${GCC_COVERAGE_COMPILE_FLAGS}")
-set(CMAKE_BUILD_TYPE Debug)
+set(CMAKE_BUILD_TYPE Release)
 
 if(test)
+	set(CMAKE_BUILD_TYPE Debug)
 	SET(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} ${GCC_COVERAGE_COMPILE_FLAGS} -fprofile-arcs -ftest-coverage -g -O0")
 	add_executable(test ${TEST} $<TARGET_OBJECTS:objlib>)
 	target_compile_features(test PUBLIC cxx_nullptr)

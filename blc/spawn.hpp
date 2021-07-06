@@ -28,11 +28,11 @@ namespace blc {
 		class spawn : public blc::stream {
 		public:
 			spawn() = delete;
-			explicit spawn(std::string command) : _command(command), _opened(true) {
+			explicit spawn(std::string command) : _command(command), _opened(true), _alive(true) {
 				this->run();
 			}
 
-			spawn(std::string command, std::vector<std::string> args) : _command(command), _opened(true) {
+			spawn(std::string command, std::vector<std::string> args) : _command(command), _opened(true), _alive(true) {
 				this->_command += std::string(" ") + blc::tools::merge(args);
 				this->run();
 			}
@@ -48,6 +48,8 @@ namespace blc {
 			void		write(const std::string &str) const;
 			std::string	read() const;
 			std::string	read(int n) const;
+			std::string	readError() const;
+			std::string	readError(int n) const;
 			void		close();
 			void		kill();
 
@@ -110,7 +112,7 @@ namespace blc {
 					cstrings.push_back(const_cast<char *>(strings[i].c_str()));
 				cstrings.push_back(static_cast<char *>(nullptr));
 
-				if (execve(cstrings[0], &cstrings[0], {}) == -1)
+				if (execvpe(cstrings[0], &cstrings[0], {}) == -1)
 					perror("");
 
 				exit(0);
@@ -152,6 +154,33 @@ namespace blc {
 			if (this->_opened == false)
 				throw blc::error::exception("not opened");
 			size = ::read(this->_pipe_from[0], &tmp, n);
+			if (size == -1)
+				throw new blc::error::exception("read error");
+			return (std::string(tmp, tmp + size));
+		}
+
+		inline std::string spawn::readError() const {
+			std::string	str;
+			char		tmp;
+			int		ret;
+
+			if (this->_opened == false)
+				throw blc::error::exception("not opened");
+			while ((ret = ::read(this->_pipe_error[0], &tmp, 1)) > 0) {
+				if (tmp == '\n' || tmp == '\0')
+					break;
+				str += tmp;
+			}
+			return (str);
+		}
+
+		inline std::string spawn::readError(int n) const {
+			char	tmp[n];
+			int	size;
+
+			if (this->_opened == false)
+				throw blc::error::exception("not opened");
+			size = ::read(this->_pipe_error[0], &tmp, n);
 			return (std::string(tmp, tmp + size));
 		}
 
