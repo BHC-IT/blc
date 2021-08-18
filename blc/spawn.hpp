@@ -51,6 +51,8 @@ namespace blc {
 			std::string	readError() const;
 			std::string	readError(int n) const;
 			void		close();
+			void		closeIn();
+			void		closeOut();
 			void		kill();
 
 			bool		readable() const;
@@ -140,9 +142,9 @@ namespace blc {
 			if (this->_opened == false)
 				throw blc::error::exception("not opened");
 			while ((ret = ::read(this->_pipe_from[0], &tmp, 1)) > 0) {
+				str += tmp;
 				if (tmp == '\n' || tmp == '\0')
 					break;
-				str += tmp;
 			}
 			return (str);
 		}
@@ -185,10 +187,19 @@ namespace blc {
 		}
 
 		inline void spawn::close() {
-			::close(this->_pipe_from[0]);
-			::close(this->_pipe_to[1]);
-			::close(this->_pipe_error[1]);
+			::close(this->_pipe_from[1]);
+			::close(this->_pipe_to[0]);
+			::close(this->_pipe_error[0]);
 			this->_opened = false;
+		}
+
+		inline void spawn::closeIn() {
+			::close(this->_pipe_to[1]);
+		}
+
+		inline void spawn::closeOut() {
+			::close(this->_pipe_from[0]);
+			::close(this->_pipe_error[0]);
 		}
 
 		inline void spawn::kill() {
