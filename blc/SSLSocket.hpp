@@ -132,6 +132,9 @@ namespace blc {
 			void		write(const std::string &str) const;
 			///< write a string throught the socket
 
+			void		write(char *buf, int count) const;
+			///< write a string throught the socket
+
 			std::string	read() const;
 			///< read a string from the socket
 

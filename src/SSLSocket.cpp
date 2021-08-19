@@ -249,6 +249,14 @@ void blc::network::SSLSocket::write(const std::string &request) const {
 		throw blc::error::exception(strerror(errno));
 }
 
+void blc::network::SSLSocket::write(char *buf, int count) const {
+	if (this->_opened == false)
+		throw blc::error::exception("not opened");
+	if (::SSL_write(this->_ssl, buf, count) == -1)
+		throw blc::error::exception(strerror(errno));
+}
+
+
 std::string blc::network::SSLSocket::read() const {
 	std::string	str;
 	char		tmp;
